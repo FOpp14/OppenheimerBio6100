@@ -2,4 +2,8 @@
 title: "About This Website"
 ---
 
-More about this website.
+Welcome to my homework dumping ground for Biol6100.
+
+If you're Nick or George, welcome!
+
+If you're not, what are you doing here?
