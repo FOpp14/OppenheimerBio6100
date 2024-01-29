@@ -1,8 +1,12 @@
 ---
-title: "About This Website"
+title: '"So Where Am I, Anyway?"'
 ---
 
-Welcome to my homework dumping ground for Biol6100.
+<br/>
+
+#### You've reached my homework dumping ground for Biol6100.
+
+<br/>
 
 If you're Nick or George, welcome!
 
