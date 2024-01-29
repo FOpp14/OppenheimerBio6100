@@ -1,7 +1,15 @@
 ---
-title: "Franny Oppenheimer - Bio2100"
+title: "Franny Oppenheimer - Bio6100"
 output: html_document
 ---
+
+<br/>
+
+#### What is this website for? My homework assignments!
+
+<br/>
+
+Making a [github repo](https://github.com/FOpp14/ComputationalBiology) was Homework 1
 
 This is the link for [Homework 2](Homework_02.html)
 
