@@ -1,5 +1,5 @@
 ---
-title: "Franny Oppenheimer - Bio6100"
+title: "Franny Oppenheimer - Biol6100"
 output: html_document
 ---
 
