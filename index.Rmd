@@ -1,5 +1,6 @@
 ---
 title: "Franny Oppenheimer - Bio2100"
+output: html_document
 ---
 
 This is the link for [Homework 2](Homework_02.html)
