@@ -1,0 +1,84 @@
+---
+title: "Homework_03"
+author: "Franny Oppenheimer"
+date: "2024-01-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Puzzle 1
+```
+Find: \s{2,}
+Replace: ,
+
+Finding each instance of 2 or more spaces (so it keeps things like "More Text" together and ignores line breaks), and replacing with a comma.
+```
+
+<br/>
+
+##### Puzzle 2
+```
+Find: (\w+), (\w+), (\w+\s*\w*\s*\w*)$
+Replace: \2 \1 (\3)
+
+Breaking up the text into pieces and reordering them.
+
+```
+
+<br/>
+
+##### Puzzle 3
+```
+Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
+Replace:\1 \2\3\n
+
+Breaking up the text into pieces and then splitting every 3 pieces up, in same order, by line break.
+
+```
+
+<br/>
+
+##### Puzzle 4
+```
+Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
+Replace:\2_\1\3\n
+
+Breaking up the text into pieces and then rearanging, with line break!
+```
+
+<br/>
+
+##### Puzzle 5
+```
+Find:(\w)\w+,(\w+),\w{2,3}.\w,(\w{1,2})
+Replace:\1_\2,\3
+
+Breaking up the text into pieces and then rearranging, only selecting what I want.
+```
+
+<br/>
+
+##### Puzzle 6
+```
+Find:(\w)\w+,(\w{4})\w+,\w{2,3}.\w,(\w{1,2})
+Replace:\1_\2,\3
+
+Changed piece 2 to only part of the species name.
+
+```
+
+<br/>
+
+##### Puzzle 7
+```
+Find:(\w{3})\w+,(\w{3})\w+,(\w{2,3}.\w),(\w{1,2}) 
+Replace:\1\2, \4, \3
+
+Breaking it up even further so I'm able to combine the first 3 digits of the genus and species names, plus including the decimal.
+
+```
