@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 Find: \s{2,}
 Replace: ,
-
-Finding each instance of 2 or more spaces (so it keeps things like "More Text" together and ignores line breaks), and replacing with a comma.
 ```
+Finding each instance of 2 or more spaces (so it keeps things like "More Text" together and ignores line breaks), and replacing with a comma.
+
 
 <br/>
 
@@ -25,10 +25,10 @@ Finding each instance of 2 or more spaces (so it keeps things like "More Text" t
 ```
 Find: (\w+), (\w+), (\w+\s*\w*\s*\w*)$
 Replace: \2 \1 (\3)
-
+```
 Breaking up the text into pieces and reordering them.
 
-```
+
 
 <br/>
 
@@ -36,10 +36,8 @@ Breaking up the text into pieces and reordering them.
 ```
 Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
 Replace:\1 \2\3\n
-
-Breaking up the text into pieces and then splitting every 3 pieces up, in same order, by line break.
-
 ```
+Breaking up the text into pieces and then splitting every 3 pieces up, in same order, by line break.
 
 <br/>
 
@@ -47,9 +45,9 @@ Breaking up the text into pieces and then splitting every 3 pieces up, in same o
 ```
 Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
 Replace:\2_\1\3\n
-
-Breaking up the text into pieces and then rearanging, with line break!
 ```
+Breaking up the text into pieces and then rearanging, with line break!
+
 
 <br/>
 
@@ -57,9 +55,9 @@ Breaking up the text into pieces and then rearanging, with line break!
 ```
 Find:(\w)\w+,(\w+),\w{2,3}.\w,(\w{1,2})
 Replace:\1_\2,\3
-
-Breaking up the text into pieces and then rearranging, only selecting what I want.
 ```
+Breaking up the text into pieces and then rearranging, only selecting what I want.
+
 
 <br/>
 
@@ -67,10 +65,8 @@ Breaking up the text into pieces and then rearranging, only selecting what I wan
 ```
 Find:(\w)\w+,(\w{4})\w+,\w{2,3}.\w,(\w{1,2})
 Replace:\1_\2,\3
-
-Changed piece 2 to only part of the species name.
-
 ```
+Changed piece 2 to only part of the species name.
 
 <br/>
 
@@ -78,7 +74,6 @@ Changed piece 2 to only part of the species name.
 ```
 Find:(\w{3})\w+,(\w{3})\w+,(\w{2,3}.\w),(\w{1,2}) 
 Replace:\1\2, \4, \3
-
+```
 Breaking it up even further so I'm able to combine the first 3 digits of the genus and species names, plus including the decimal.
 
-```

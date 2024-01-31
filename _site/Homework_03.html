@@ -361,61 +361,56 @@ display: none;
 <div id="puzzle-1" class="section level5">
 <h5>Puzzle 1</h5>
 <pre><code>Find: \s{2,}
-Replace: ,
-
-Finding each instance of 2 or more spaces (so it keeps things like &quot;More Text&quot; together and ignores line breaks), and replacing with a comma.</code></pre>
+Replace: ,</code></pre>
+<p>Finding each instance of 2 or more spaces (so it keeps things like
+“More Text” together and ignores line breaks), and replacing with a
+comma.</p>
 <p><br /></p>
 </div>
 <div id="puzzle-2" class="section level5">
 <h5>Puzzle 2</h5>
 <pre><code>Find: (\w+), (\w+), (\w+\s*\w*\s*\w*)$
-Replace: \2 \1 (\3)
-
-Breaking up the text into pieces and reordering them.
-</code></pre>
+Replace: \2 \1 (\3)</code></pre>
+<p>Breaking up the text into pieces and reordering them.</p>
 <p><br /></p>
 </div>
 <div id="puzzle-3" class="section level5">
 <h5>Puzzle 3</h5>
 <pre><code>Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
-Replace:\1 \2\3\n
-
-Breaking up the text into pieces and then splitting every 3 pieces up, in same order, by line break.
-</code></pre>
+Replace:\1 \2\3\n</code></pre>
+<p>Breaking up the text into pieces and then splitting every 3 pieces
+up, in same order, by line break.</p>
 <p><br /></p>
 </div>
 <div id="puzzle-4" class="section level5">
 <h5>Puzzle 4</h5>
 <pre><code>Find:(\w{4}) (\w+\s\w+\s*\w*\s*\w*\s*\w*)(.mp3)
-Replace:\2_\1\3\n
-
-Breaking up the text into pieces and then rearanging, with line break!</code></pre>
+Replace:\2_\1\3\n</code></pre>
+<p>Breaking up the text into pieces and then rearanging, with line
+break!</p>
 <p><br /></p>
 </div>
 <div id="puzzle-5" class="section level5">
 <h5>Puzzle 5</h5>
 <pre><code>Find:(\w)\w+,(\w+),\w{2,3}.\w,(\w{1,2})
-Replace:\1_\2,\3
-
-Breaking up the text into pieces and then rearranging, only selecting what I want.</code></pre>
+Replace:\1_\2,\3</code></pre>
+<p>Breaking up the text into pieces and then rearranging, only selecting
+what I want.</p>
 <p><br /></p>
 </div>
 <div id="puzzle-6" class="section level5">
 <h5>Puzzle 6</h5>
 <pre><code>Find:(\w)\w+,(\w{4})\w+,\w{2,3}.\w,(\w{1,2})
-Replace:\1_\2,\3
-
-Changed piece 2 to only part of the species name.
-</code></pre>
+Replace:\1_\2,\3</code></pre>
+<p>Changed piece 2 to only part of the species name.</p>
 <p><br /></p>
 </div>
 <div id="puzzle-7" class="section level5">
 <h5>Puzzle 7</h5>
 <pre><code>Find:(\w{3})\w+,(\w{3})\w+,(\w{2,3}.\w),(\w{1,2}) 
-Replace:\1\2, \4, \3
-
-Breaking it up even further so I&#39;m able to combine the first 3 digits of the genus and species names, plus including the decimal.
-</code></pre>
+Replace:\1\2, \4, \3</code></pre>
+<p>Breaking it up even further so I’m able to combine the first 3 digits
+of the genus and species names, plus including the decimal.</p>
 </div>
 
 
