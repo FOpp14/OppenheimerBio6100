@@ -13,3 +13,5 @@ Making a [github repo](https://github.com/FOpp14/ComputationalBiology) was Homew
 
 This is the link for [Homework 2](Homework_02.html)
 
+Looking for [Homework 3](Homework_03.html)?
+
