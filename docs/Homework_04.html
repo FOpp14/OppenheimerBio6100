@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Franny Oppenheimer" />
 
+<meta name="date" content="2024-02-07" />
 
-<title>Franny Oppenheimer - Biol6100</title>
+<title>Homework_04</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -260,22 +262,99 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Franny Oppenheimer - Biol6100</h1>
+<h1 class="title toc-ignore">Homework_04</h1>
+<h4 class="author">Franny Oppenheimer</h4>
+<h4 class="date">2024-02-07</h4>
 
 </div>
 
 
 <p><br/></p>
-<div id="what-is-this-website-for-my-homework-assignments"
-class="section level4">
-<h4>What is this website for? My homework assignments!</h4>
+<div id="puzzle-1" class="section level5">
+<h5>Puzzle 1</h5>
+<pre class="r"><code>x &lt;- 1.1
+a &lt;- 2.2
+b &lt;- 3.3
+
+x*a*b</code></pre>
+<pre><code>## [1] 7.986</code></pre>
+<pre class="r"><code>y &lt;- x*a
+y*b</code></pre>
+<pre><code>## [1] 7.986</code></pre>
+<pre class="r"><code>3*x^3 + 2*x^2 + 1</code></pre>
+<pre><code>## [1] 7.413</code></pre>
 <p><br/></p>
-<p>Making a <a
-href="https://github.com/FOpp14/ComputationalBiology">github repo</a>
-was Homework 1</p>
-<p>This is the link for <a href="Homework_02.html">Homework 2</a></p>
-<p>Looking for <a href="Homework_03.html">Homework 3</a>?</p>
-<p><a href="Homework_04.html">Homework 4</a> was fairly challenging</p>
+</div>
+<div id="puzzle-2" class="section level5">
+<h5>Puzzle 2</h5>
+<pre class="r"><code>a &lt;- c(1,2,3,4,5,6,7,8)
+b &lt;- c(7,6,5,4,3,2,1)
+z &lt;- c(a,b)
+print(z)</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 6 7 8 7 6 5 4 3 2 1</code></pre>
+<pre class="r"><code>a &lt;- c(1,2,3,4,5)
+rep(a,a)</code></pre>
+<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
+<pre class="r"><code>b &lt;- c(5,4,3,2,1)
+rep(b,a)</code></pre>
+<pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
+<p><br/></p>
+</div>
+<div id="puzzle-3" class="section level5">
+<h5>Puzzle 3</h5>
+<pre class="r"><code>a &lt;- runif(2)
+print(a)</code></pre>
+<pre><code>## [1] 0.7285874 0.3319036</code></pre>
+<pre class="r"><code>r = sqrt((a[1]^2)+(a[2]^2))
+print(r)</code></pre>
+<pre><code>## [1] 0.8006245</code></pre>
+<pre class="r"><code>theta = atan((a[2])/(a[1]))
+print(theta)</code></pre>
+<pre><code>## [1] 0.4274548</code></pre>
+<p><br/></p>
+</div>
+<div id="puzzle-4" class="section level5">
+<h5>Puzzle 4</h5>
+<pre class="r"><code>queue &lt;- c(&quot;sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)
+print(queue)</code></pre>
+<pre><code>## [1] &quot;sheep&quot; &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;</code></pre>
+<pre class="r"><code>queueA &lt;- c(queue, &quot;serpent&quot;)
+print(queueA)</code></pre>
+<pre><code>## [1] &quot;sheep&quot;   &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queueB &lt;- c(queueA[2:5])
+print(queueB)</code></pre>
+<pre><code>## [1] &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queueC &lt;- c(&quot;donkey&quot;, queueB)
+print(queueC)</code></pre>
+<pre><code>## [1] &quot;donkey&quot;  &quot;fox&quot;     &quot;owl&quot;     &quot;ant&quot;     &quot;serpent&quot;</code></pre>
+<pre class="r"><code>queueD &lt;- c(queueC[1:4])
+print(queueD)</code></pre>
+<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;owl&quot;    &quot;ant&quot;</code></pre>
+<pre class="r"><code>queueE &lt;- c(queueD[c(1,2,4)])
+print(queueE)</code></pre>
+<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;ant&quot;</code></pre>
+<pre class="r"><code>queueF &lt;- c(queueE[c(1,2)],&quot;aphid&quot;,queueE[3])
+print(queueF)</code></pre>
+<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;aphid&quot;  &quot;ant&quot;</code></pre>
+<pre class="r"><code>length(queueF)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>queueF[1]</code></pre>
+<pre><code>## [1] &quot;donkey&quot;</code></pre>
+<pre class="r"><code>queueF[2]</code></pre>
+<pre><code>## [1] &quot;fox&quot;</code></pre>
+<pre class="r"><code>queueF[3]</code></pre>
+<pre><code>## [1] &quot;aphid&quot;</code></pre>
+<pre class="r"><code>queueF[4]</code></pre>
+<pre><code>## [1] &quot;ant&quot;</code></pre>
+<p><br/></p>
+</div>
+<div id="puzzle-5" class="section level5">
+<h5>Puzzle 5</h5>
+<pre class="r"><code>a &lt;- 1:100 
+b &lt;- which (a %% 2 != 0 &amp; a %% 3 != 0 &amp; a %% 7 != 0)
+print(b)</code></pre>
+<pre><code>##  [1]  1  5 11 13 17 19 23 25 29 31 37 41 43 47 53 55 59 61 65 67 71 73 79 83 85
+## [26] 89 95 97</code></pre>
 </div>
 
 

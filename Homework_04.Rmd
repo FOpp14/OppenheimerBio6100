@@ -1,0 +1,105 @@
+---
+title: "Homework_04"
+author: "Franny Oppenheimer"
+date: "2024-02-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Puzzle 1
+
+```{r}
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+x*a*b
+
+y <- x*a
+y*b
+
+3*x^3 + 2*x^2 + 1
+```
+
+
+<br/>
+
+##### Puzzle 2
+
+```{r}
+a <- c(1,2,3,4,5,6,7,8)
+b <- c(7,6,5,4,3,2,1)
+z <- c(a,b)
+print(z)
+
+
+a <- c(1,2,3,4,5)
+rep(a,a)
+
+
+b <- c(5,4,3,2,1)
+rep(b,a)
+```
+
+<br/>
+
+##### Puzzle 3
+
+```{r}
+a <- runif(2)
+print(a)
+
+r = sqrt((a[1]^2)+(a[2]^2))
+print(r)
+theta = atan((a[2])/(a[1]))
+print(theta)
+```
+
+<br/>
+
+##### Puzzle 4
+
+```{r}
+queue <- c("sheep", "fox", "owl", "ant")
+print(queue)
+
+queueA <- c(queue, "serpent")
+print(queueA)
+
+queueB <- c(queueA[2:5])
+print(queueB)
+
+queueC <- c("donkey", queueB)
+print(queueC)
+
+
+queueD <- c(queueC[1:4])
+print(queueD)
+
+queueE <- c(queueD[c(1,2,4)])
+print(queueE)
+
+queueF <- c(queueE[c(1,2)],"aphid",queueE[3])
+print(queueF)
+
+length(queueF)
+queueF[1]
+queueF[2]
+queueF[3]
+queueF[4]
+```
+
+<br/>
+
+##### Puzzle 5
+
+```{r}
+a <- 1:100 
+b <- which (a %% 2 != 0 & a %% 3 != 0 & a %% 7 != 0)
+print(b)
+```
