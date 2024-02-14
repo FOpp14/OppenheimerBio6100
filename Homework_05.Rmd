@@ -1,0 +1,88 @@
+---
+title: "Homework_05"
+author: "Franny Oppenheimer"
+date: "2024-02-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Question 1
+
+```{r}
+n_dims <- sample(3:10,1)
+print(n_dims)
+v <- 1:(n_dims^2)
+print(v)
+vShuffle <-sample(v)
+print(vShuffle)
+m <- matrix(data=vShuffle,nrow=n_dims)
+print(m)
+mTrans <- t(m)
+print(mTrans)
+sum(mTrans[1,])
+mean(mTrans[1,])
+sum(mTrans[n_dims,])
+mean(mTrans[n_dims,])
+EmTrans <- eigen(mTrans)
+print(EmTrans)
+# $values are the values that each term is multiplied by to get the eigenvectors
+# $vectors are the actual vectors created by multiplying the $values and the terms in the matrix
+typeof(EmTrans[["$values"]])
+typeof(EmTrans[["$vectors"]])
+```
+
+<br/>
+
+##### Question 2
+
+```{r}
+my_matrix <- matrix(data=runif(16),nrow=4)
+print(my_matrix)
+mylogical <- runif(1:100)
+my_logical <- mylogical < 0.5
+print (my_logical)
+myletters <- letters[1:26]
+my_letters <- sample(myletters)
+print(my_letters)
+MyList <- list(my_matrix[2,2],my_logical[2],my_letters[2])
+print(MyList)
+typeof(MyList[[1]])
+typeof(MyList[[2]])
+typeof(MyList[[3]])
+NewAtomicVector <- c(MyList[[1]],MyList[[2]],MyList[[3]])
+print(NewAtomicVector)
+typeof(NewAtomicVector)
+```
+
+<br/>
+
+##### Question 3
+
+```{r}
+my_unis <- sample(0:10,26,replace=TRUE)
+print(my_unis)
+myletters <- letters[1:26]
+my_letters <- sample(myletters)
+print(my_letters)
+
+MyDF <- data.frame(my_unis,my_letters)
+print(MyDF)
+
+MyDF[sample(0:26,4),] <- NA
+print(MyDF)
+
+is.na(MyDF)
+
+MyDF2 <- MyDF[order(MyDF$my_letters),]
+print(MyDF2)
+
+MyDF3 <- MyDF2[!rowSums(is.na(MyDF2)),]
+print(MyDF3)
+mean(MyDF3[,"my_unis"])
+```
+

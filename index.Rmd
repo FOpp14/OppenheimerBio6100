@@ -16,3 +16,5 @@ This is the link for [Homework 2](Homework_02.html)
 Looking for [Homework 3](Homework_03.html)?
 
 [Homework 4](Homework_04.html) was fairly challenging
+
+We did [Homework 5](Homework_05.html) on Valentine's day - boy do I LOVE R!
