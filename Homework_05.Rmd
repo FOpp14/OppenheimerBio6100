@@ -81,7 +81,8 @@ is.na(MyDF)
 MyDF2 <- MyDF[order(MyDF$my_letters),]
 print(MyDF2)
 
-MyDF3 <- MyDF2[!rowSums(is.na(MyDF2)),]
+# MyDF3 <- MyDF2[!rowSums(is.na(MyDF2)),]
+MyDF3 <- MyDF2[complete.cases(MyDF2),]
 print(MyDF3)
 mean(MyDF3[,"my_unis"])
 ```
