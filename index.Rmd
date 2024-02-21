@@ -18,3 +18,5 @@ Looking for [Homework 3](Homework_03.html)?
 [Homework 4](Homework_04.html) was fairly challenging
 
 We did [Homework 5](Homework_05.html) on Valentine's day - boy do I LOVE R!
+
+[Homework 6](Homework_06.html) used data from the real world - check out [the study I took mine from!](https://pubmed.ncbi.nlm.nih.gov/30464066/)
