@@ -46,7 +46,7 @@ print(normz)
 
 nGroup <-  3
 nName <- c("2002","2003","2004") # names of groups
-nSize <- c(1,1,1) # number of observations in each group
+nSize <- c(12,12,12) # number of observations in each group
 
 # get the mean + sd
 # 2002
