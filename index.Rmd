@@ -20,3 +20,5 @@ Looking for [Homework 3](Homework_03.html)?
 We did [Homework 5](Homework_05.html) on Valentine's day - boy do I *love* R!
 
 [Homework 6](Homework_06.html) used data from the real world - check out [the study](https://pubmed.ncbi.nlm.nih.gov/30464066/) I took mine from!
+
+[Homework 7](Homework_07.html) used that same data to create a new normal dataset with the same parameters

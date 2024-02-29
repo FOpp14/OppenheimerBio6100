@@ -1,0 +1,118 @@
+---
+title: "Homwork_07"
+author: "Franny Oppenheimer"
+date: "2024-02-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### 
+
+```{r}
+
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+library(dplyr)
+
+# fit normal distribution to data + grab maximum likelihood estimators
+
+z <- read.csv("Allen et al - Proceedings B Supplementary Data - Raw Data 3.csv",header=TRUE,sep=",")
+z$myVar <-z$Mean.Unique.Units.per.Cycle
+summary(z)
+
+# get stats (mean + sd) of mean.unique.units.per.cycle from Allen et al.
+normPars <- fitdistr(z$myVar,"normal")
+print(normPars) # mean is 20.038462 , sd is 1.014290
+str(normPars)
+zMean <- normPars$estimate["mean"] # note structure of getting a named attribute -> mean is 20.61364 (as stated above)
+zSD <- normPars$estimate["sd"] 
+# Using data from Allen et al., 2018 - mean unique units per cycle
+
+
+# generate random normal data with the mean and sd from that dataset
+counts <- rnorm(n=3,mean=zMean,sd=zSD)
+years <- c("2002","2003","2004")
+
+# make that normal data into a data frame
+normz <- data.frame(years,counts)
+print(normz)
+
+# setting up one-way ANOVA - just the first 3 years
+
+nGroup <-  3
+nName <- c("2002","2003","2004") # names of groups
+nSize <- c(1,1,1) # number of observations in each group
+
+# get the mean + sd
+# 2002
+year <- normz[normz$years=="2002",]
+print(year)
+summary2002 <- summary(year[,"counts"])
+print(summary2002)
+mean2002 <- summary2002["Mean"]
+print(mean2002)
+sd2002 <- sd((year[,"counts"]))
+print(sd2002)
+
+# 2003
+year <- normz[normz$years=="2003",]
+print(year)
+summary2003 <- summary(year[,"counts"])
+print(summary2003)
+mean2003 <- summary2003["Mean"]
+print(mean2003)
+sd2003 <- sd((year[,"counts"]))
+print(sd2003)
+
+# 2004
+year <- normz[normz$years=="2004",]
+print(year)
+summary2004 <- summary(year[,"counts"])
+print(summary2004)
+mean2004 <- summary2004["Mean"]
+print(mean2004)
+sd2004 <- sd((year[,"counts"]))
+print(sd2004)
+
+# I am gettng NA for SD because there's really only one value which IS the mean, so I'm just going to assign random values
+
+sd2002 <- 3
+sd2003 <- 2
+sd2004 <- 1
+
+# adjusting the means of different groups!
+
+# mean2002 <- 15.1
+# mean2003 <- 15.2
+# mean2004 <- 15.3
+
+ID <- 1:(sum(nSize)) # ID vector for each row (sum of the number of observations) - the overall number of rows we need!
+
+resVar <- c(rnorm(n=nSize[1],mean=mean2002,sd=sd2002),
+            rnorm(n=nSize[2],mean=mean2003,sd=sd2003),
+            rnorm(n=nSize[3],mean=mean2004,sd=sd2004))
+
+# doing the ANOVA
+
+TGroup <- rep(nName,nSize) # repeating the name by the number
+ANOdata <- data.frame(ID,TGroup,resVar) #
+str(ANOdata)
+print(ANOdata)
+
+# make graph
+
+ANOPlot <- ggplot(data=ANOdata,aes(x=TGroup,y=resVar,fill=TGroup)) +
+  geom_boxplot()
+print(ANOPlot)
+
+
+# Adjust the means of different groups: if I raise the means of all groups to 25, the ANOVA looks more uniform but still follows the same trend. If I lower the means of all groups to 15, it still seems to follow the same trend for the first 2 groups, but the last group's (2004) resVar skyrockets (not sure why). If I make mean2002 5, mean2003 15, and mean2004 25, the resVars follow the same trend. If the means are within 0.1 of each other, there still appears to be some significant difference, but with means within 0.01 of each other there is none.
+
+# Adjust the sample sizes of different groups: by adjusting the sample size down to 3 per group, I see more of a significant difference between the 3 groups. Even given a sample size one 1, I see significance.
+
+```
