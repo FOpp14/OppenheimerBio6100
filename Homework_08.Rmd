@@ -1,0 +1,170 @@
+---
+title: "Homework_08"
+author: "Franny Oppenheimer"
+date: "2024-03-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Question 1
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+data("iris")
+glimpse(iris)
+
+# 5 columns (variables), 150 rows (observations)
+
+```
+
+<br/>
+
+##### Question 2
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+iris1 <- filter(iris, Species!="setosa",Sepal.Length>6,Sepal.Width>2.5)
+
+iris1
+
+```
+
+<br/>
+
+##### Question 3
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+iris2 <- data.frame(
+  select(iris1, Species, Sepal.Length, Sepal.Width))
+
+glimpse(iris2)
+
+# 3 columns (variables), 56 rows (observations)
+```
+<br/>
+
+##### Question 4
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+iris3 <- arrange(iris2, by=desc(Sepal.Length))
+head(iris3, 6)
+
+```
+
+<br/>
+
+##### Question 5
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+iris4 <- mutate(iris3, Sepal.Area=Sepal.Length*Sepal.Width)
+
+iris4
+
+# 4 variables, 56 observations
+
+```
+
+<br/>
+
+##### Question 6
+
+```{r}
+library(tidyverse)
+library(dplyr)
+
+
+iris5 <- summarize(iris4,
+meanSepalLength=mean(Sepal.Length),
+meanSepalWidth=mean(Sepal.Width),
+samplesize=n())
+
+print(iris5)
+
+```
+
+<br/>
+
+##### Question 7
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+iris4Group <- group_by(iris4, Species)
+iris6 <- summarize(iris4Group,
+meanSepalLength=mean(Sepal.Length),
+meanSepalWidth=mean(Sepal.Width),
+samplesize=n())
+
+print(iris6)
+```
+
+<br/>
+
+##### Question 8
+
+```{r}
+library(tidyverse)
+library(dplyr)
+
+irisFinal <- iris %>% 
+  
+  filter(Species!="setosa", Sepal.Length>6, Sepal.Width>2.5) %>%
+  
+  select(Species, Sepal.Length, Sepal.Width) %>%
+  
+  arrange(by=desc(Sepal.Length)) %>%
+  
+  mutate(Sepal.Area=Sepal.Length*Sepal.Width) %>%
+ 
+   group_by(Species) %>%
+ 
+   summarize( 
+             meanSepalLength=mean(Sepal.Length),
+             meanSepalWidth=mean(Sepal.Width),
+             samplesize=n())
+
+
+print(irisFinal)
+```
+
+<br/>
+
+##### Question 8
+
+```{r}
+library(tidyverse)
+library(dplyr)
+
+irisLong <- iris %>%
+   pivot_longer(cols = c(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width),
+                names_to = "Measure",
+                values_to = "Value")
+
+print(irisLong)
+
+```
