@@ -1,0 +1,128 @@
+---
+title: "Homework_09"
+author: "Franny Oppenheimer"
+date: "2024-03-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Creating a fake dataset using Mean Unique Units per Cycle
+
+```{r}
+
+# purposefully NOT making this a function because I want these variables to be accessible later
+
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+library(dplyr)
+  
+# Read in data
+z <- read.csv("Allen et al - Proceedings B Supplementary Data - Raw Data 3.csv",header=TRUE,sep=",")
+z$myVar <-z$Mean.Unique.Units.per.Cycle
+summary(z)
+
+# Generate relevant summary statistics from data
+normPars <- fitdistr(z$myVar,"normal")
+print(normPars) # mean is 20.038462 , sd is 1.014290
+str(normPars)
+zMean <- normPars$estimate["mean"] # note structure of getting a named attribute -> mean is 20.61364 (as stated above)
+zSD <- normPars$estimate["sd"] 
+# Using data from Allen et al., 2018 - mean unique units per cycle
+
+# Generate random normal data with the mean and sd from that dataset
+counts <- rnorm(n=3,mean=zMean,sd=zSD)
+years <- c("2002","2003","2004")
+
+# make that normal data into a data frame
+normz <- data.frame(years,counts)
+print(normz)
+
+```
+
+<br/>
+
+##### Conducting an ANOVA with Mean Unique Units per Cycle
+
+```{r}
+
+# setting up one-way ANOVA - just the first 3 years
+
+# Global Variables
+
+nGroup <-  3
+nName <- c("2002","2003","2004") # names of groups
+nSize <- c(12,12,12) # number of observations in each group
+
+# For loop for getting summary stats of my new dataset
+
+ID <- 1:(sum(nSize)) # ID vector for each row (sum of the number of observations) - the overall number of rows we need!
+
+
+ANOVA <- function() {
+  
+  # summary stat for loop
+  
+  for (i in 1:3) {
+  
+    year <- normz[i,"years"]
+    mean <- normz[i,2] # already a mean in the dataset given, no need to calculate it
+  
+  # I am getting NA for SD because there's really only one value which IS the mean, so I'm just going to assign random values
+    sd <- runif(1) 
+    
+  # use the summary stats to make a normal distribution
+  resVar <- c(rnorm(n=nSize[1],mean=mean,sd=sd))
+  
+  }
+
+# doing the ANOVA
+
+TGroup <- rep(nName,nSize) # repeating the name by the number
+ANOdata <- data.frame(ID,TGroup,resVar) #
+print(ANOdata)
+str(ANOdata)
+print(ANOdata)
+
+# make graph
+
+ANOPlot <- ggplot(data=ANOdata,aes(x=TGroup,y=resVar,fill=TGroup)) +
+  geom_boxplot()
+
+print(ANOPlot)
+}
+
+ANOVA
+```
+
+<br/>
+
+##### Making a Bar Plot (and calculating the median to build it)
+
+```{r}
+
+library(ggplot2)
+
+BarPlot <- for (i in 1:3) {
+  
+    year <- normz[i,"years"]
+    mean <- normz[i,2] # already a mean in the dataset given, no need to calculate it
+    median <- normPars$estimate["median"] 
+  
+  # I am getting NA for SD because there's really only one value which IS the mean, so I'm just going to assign random values
+    sd <- runif(1) 
+    
+  # use the summary stats to make a bar chart
+
+# ggplot(df,aes(x=Category))+geom_boxplot(aes(lower=mean-sd,upper=mean+sd,middle=mean,ymin=mean-3*sd,ymax=mean+3*sd),stat="identity")
+  
+# that^ didn't seem to work and also prevented me from knitting    
+}
+
+# I am getting an error and idk why
+
+```
