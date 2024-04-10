@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Franny Oppenheimer" />
+
+<meta name="date" content="2024-04-03" />
+
+<title>Homework_10</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Homework_10</h1>
+<h4 class="author">Franny Oppenheimer</h4>
+<h4 class="date">2024-04-03</h4>
+
+</div>
+
+
+<p><br/></p>
+<div id="question-1" class="section level5">
+<h5>Question 1</h5>
+<pre class="r"><code>counter &lt;- 0
+vector &lt;- c(0,1,2,3,4,5,6,0,0,4,5,6,0)
+  
+
+for (i in vector) {
+  
+  if (&quot;0&quot; %in% i == &quot;TRUE&quot;) {
+  counter = counter + 1
+  }
+  
+  return(counter)
+}
+
+counter</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><br/></p>
+</div>
+<div id="question-2" class="section level5">
+<h5>Question 2</h5>
+<pre class="r"><code>vector &lt;- c(0,1,2,3,4,5,6,0,0,4,5,6,0)
+
+countzeroes &lt;- function(vector){
+  return(sum(vector==0))
+}
+
+countzeroes(vector)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p><br/></p>
+</div>
+<div id="question-3" class="section level5">
+<h5>Question 3</h5>
+<pre class="r"><code>getdata &lt;- function(row,column) {
+  results &lt;- matrix(nrow=row,ncol=column)
+  
+  for (i in 1:row) {
+    for (j in 1:column) {
+      results[i,j] &lt;- i*j
+    }
+  }
+return(results)
+}
+
+row &lt;- 3
+column &lt;- 4
+data &lt;- getdata(row,column)
+matrix &lt;- matrix(data=data,nrow=row,ncol=column)</code></pre>
+<p><br/></p>
+</div>
+<div id="question-4a" class="section level5">
+<h5>Question 4a</h5>
+<pre class="r"><code>n &lt;- 100
+means &lt;- c(10,20,30)
+group &lt;- rep(1:3, each=n)
+response &lt;- c(rnorm(n,mean=means[1]),
+              rnorm(n,mean=means[2]),
+              rnorm(n,mean=means[3]))
+
+data &lt;- data.frame(group,response)
+data</code></pre>
+<pre><code>##     group  response
+## 1       1  8.475878
+## 2       1  9.855622
+## 3       1 10.783912
+## 4       1  8.398290
+## 5       1 10.020411
+## 6       1 10.185525
+## 7       1 10.079563
+## 8       1  9.747397
+## 9       1  9.242727
+## 10      1  9.107590
+## 11      1  8.654022
+## 12      1  9.665094
+## 13      1 10.903659
+## 14      1 10.327674
+## 15      1 10.180171
+## 16      1  9.372488
+## 17      1 11.976079
+## 18      1  8.026345
+## 19      1  9.456430
+## 20      1 10.512275
+## 21      1 11.258142
+## 22      1  9.489776
+## 23      1 10.071009
+## 24      1 11.024180
+## 25      1 11.410007
+## 26      1 11.390996
+## 27      1 10.619324
+## 28      1 10.926975
+## 29      1 11.277322
+## 30      1  9.103009
+## 31      1 11.665910
+## 32      1  9.773865
+## 33      1  8.716986
+## 34      1 11.038956
+## 35      1  8.760165
+## 36      1 10.608568
+## 37      1  9.698120
+## 38      1  9.380344
+## 39      1 10.493237
+## 40      1 11.852480
+## 41      1 11.414100
+## 42      1  9.960773
+## 43      1 10.018228
+## 44      1 10.150519
+## 45      1 10.203167
+## 46      1  9.895007
+## 47      1 10.749723
+## 48      1 11.304138
+## 49      1  9.796372
+## 50      1 10.167575
+## 51      1  9.340306
+## 52      1 10.046188
+## 53      1  9.761984
+## 54      1 11.186237
+## 55      1 10.301214
+## 56      1 10.278500
+## 57      1  9.815330
+## 58      1 10.841386
+## 59      1  8.326317
+## 60      1  8.730102
+## 61      1 10.109431
+## 62      1 11.337914
+## 63      1  9.707166
+## 64      1 11.127612
+## 65      1 10.934070
+## 66      1  9.914068
+## 67      1 12.559692
+## 68      1  9.899616
+## 69      1  8.777352
+## 70      1 10.968115
+## 71      1 10.586355
+## 72      1  9.865677
+## 73      1 11.926901
+## 74      1  8.068542
+## 75      1  8.558413
+## 76      1  9.328078
+## 77      1  9.073580
+## 78      1  7.409181
+## 79      1  8.403000
+## 80      1  9.471385
+## 81      1 12.342299
+## 82      1 11.743398
+## 83      1  9.911817
+## 84      1 10.202941
+## 85      1  8.732567
+## 86      1  8.757349
+## 87      1  9.087363
+## 88      1  9.305371
+## 89      1  8.938280
+## 90      1 10.291966
+## 91      1 10.547102
+## 92      1 10.121503
+## 93      1  9.775738
+## 94      1 10.011508
+## 95      1 10.350447
+## 96      1  8.767352
+## 97      1  9.554751
+## 98      1 12.275921
+## 99      1  9.662084
+## 100     1 10.547955
+## 101     2 19.893436
+## 102     2 19.370554
+## 103     2 19.566539
+## 104     2 21.941904
+## 105     2 17.136535
+## 106     2 19.072079
+## 107     2 18.283787
+## 108     2 18.203354
+## 109     2 20.536184
+## 110     2 20.902348
+## 111     2 19.524352
+## 112     2 21.327890
+## 113     2 19.896623
+## 114     2 19.038279
+## 115     2 19.597492
+## 116     2 18.858435
+## 117     2 19.170320
+## 118     2 20.367629
+## 119     2 19.030203
+## 120     2 21.014966
+## 121     2 18.810125
+## 122     2 18.536000
+## 123     2 19.678437
+## 124     2 18.416076
+## 125     2 19.254698
+## 126     2 21.278868
+## 127     2 18.950335
+## 128     2 20.803965
+## 129     2 21.366363
+## 130     2 18.564055
+## 131     2 19.320905
+## 132     2 20.637971
+## 133     2 20.469477
+## 134     2 18.339820
+## 135     2 20.009936
+## 136     2 19.161018
+## 137     2 21.894912
+## 138     2 20.306429
+## 139     2 19.100179
+## 140     2 20.539824
+## 141     2 20.051091
+## 142     2 18.946965
+## 143     2 20.852629
+## 144     2 20.197520
+## 145     2 20.075397
+## 146     2 21.652911
+## 147     2 19.236227
+## 148     2 20.892162
+## 149     2 20.280414
+## 150     2 19.393854
+## 151     2 20.942878
+## 152     2 19.160360
+## 153     2 20.845484
+## 154     2 21.640444
+## 155     2 20.324054
+## 156     2 20.002564
+## 157     2 19.372049
+## 158     2 21.087362
+## 159     2 20.224908
+## 160     2 19.327575
+## 161     2 19.813455
+## 162     2 19.925225
+## 163     2 22.405098
+## 164     2 18.788975
+## 165     2 20.556844
+## 166     2 19.943276
+## 167     2 19.490706
+## 168     2 20.775247
+## 169     2 18.912924
+## 170     2 21.677148
+## 171     2 19.574050
+## 172     2 21.376927
+## 173     2 21.588280
+## 174     2 20.046635
+## 175     2 18.710061
+## 176     2 20.224325
+## 177     2 19.788729
+## 178     2 19.111810
+## 179     2 19.887419
+## 180     2 20.586816
+## 181     2 19.635858
+## 182     2 19.014955
+## 183     2 18.663917
+## 184     2 19.378231
+## 185     2 17.087041
+## 186     2 21.550477
+## 187     2 20.325764
+## 188     2 19.697984
+## 189     2 19.376490
+## 190     2 19.005521
+## 191     2 19.944654
+## 192     2 21.016017
+## 193     2 19.697088
+## 194     2 20.175994
+## 195     2 20.213773
+## 196     2 20.420184
+## 197     2 20.819120
+## 198     2 18.918476
+## 199     2 17.586189
+## 200     2 19.130441
+## 201     3 29.632790
+## 202     3 31.405094
+## 203     3 29.941012
+## 204     3 29.937931
+## 205     3 29.898160
+## 206     3 31.101854
+## 207     3 30.431058
+## 208     3 29.529014
+## 209     3 29.295736
+## 210     3 30.692388
+## 211     3 29.499539
+## 212     3 29.126041
+## 213     3 30.734466
+## 214     3 29.045734
+## 215     3 30.223262
+## 216     3 30.000738
+## 217     3 29.069252
+## 218     3 29.579744
+## 219     3 31.119834
+## 220     3 29.462161
+## 221     3 29.151615
+## 222     3 31.170238
+## 223     3 30.698803
+## 224     3 28.840912
+## 225     3 29.979919
+## 226     3 29.799868
+## 227     3 31.157989
+## 228     3 30.711418
+## 229     3 28.704770
+## 230     3 29.072157
+## 231     3 29.552150
+## 232     3 31.297218
+## 233     3 29.808309
+## 234     3 28.888754
+## 235     3 29.255288
+## 236     3 29.431336
+## 237     3 30.659375
+## 238     3 30.649775
+## 239     3 31.042239
+## 240     3 30.433747
+## 241     3 28.964867
+## 242     3 30.601246
+## 243     3 30.688791
+## 244     3 29.868599
+## 245     3 29.889300
+## 246     3 31.261870
+## 247     3 29.404831
+## 248     3 29.857220
+## 249     3 30.614572
+## 250     3 28.477625
+## 251     3 29.972066
+## 252     3 29.655852
+## 253     3 30.269285
+## 254     3 28.482304
+## 255     3 28.741044
+## 256     3 29.464178
+## 257     3 31.201914
+## 258     3 29.034839
+## 259     3 28.869317
+## 260     3 30.055085
+## 261     3 29.116573
+## 262     3 29.768659
+## 263     3 29.838283
+## 264     3 32.370830
+## 265     3 30.025860
+## 266     3 31.781310
+## 267     3 31.816740
+## 268     3 29.568932
+## 269     3 31.768943
+## 270     3 29.151227
+## 271     3 30.367630
+## 272     3 31.431477
+## 273     3 31.639310
+## 274     3 29.350147
+## 275     3 30.265824
+## 276     3 29.433142
+## 277     3 29.670835
+## 278     3 30.065626
+## 279     3 30.764242
+## 280     3 30.584259
+## 281     3 30.089729
+## 282     3 30.995626
+## 283     3 30.566564
+## 284     3 30.552536
+## 285     3 29.784776
+## 286     3 31.867725
+## 287     3 29.806653
+## 288     3 30.259291
+## 289     3 28.751850
+## 290     3 30.353867
+## 291     3 28.945667
+## 292     3 30.403089
+## 293     3 31.310573
+## 294     3 29.717407
+## 295     3 29.940111
+## 296     3 30.796597
+## 297     3 30.431473
+## 298     3 29.605049
+## 299     3 29.439865
+## 300     3 31.134557</code></pre>
+<p><br/></p>
+</div>
+<div id="question-4b" class="section level5">
+<h5>Question 4b</h5>
+<pre class="r"><code># reshuffle + get means!
+reshuffle &lt;- function(data) {
+
+  for (i in data) {
+    shuffleresponse &lt;- sample(data[,2])
+    shuffleresponse
+
+    # new data frame using the shuffled responses
+    data2 &lt;- data.frame(group,shuffleresponse)
+    data2
+
+    # get means of each group
+    group1mean &lt;- mean(data2[1:n,2])
+    group2mean &lt;- mean(data2[n:(2*n),2])
+    group3mean &lt;- mean(data2[(2*n):(3*n),2])
+  }
+newmeans &lt;- data.frame(group1mean,group2mean,group3mean)
+return(newmeans)
+}
+
+# test that it works
+reshuffle(data) # it works!</code></pre>
+<pre><code>##   group1mean group2mean group3mean
+## 1   19.64916   19.32391    20.9514</code></pre>
+<pre class="r"><code># save the reshuffled means for later
+for4d &lt;- reshuffle(data) </code></pre>
+<p><br/></p>
+</div>
+<div id="question-4c" class="section level5">
+<h5>Question 4c</h5>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>runagain &lt;- function(data) {
+
+  # make an empty data frame to fill in later
+  results &lt;- data.frame(matrix(nrow=n,ncol=4))
+  colnames(results) &lt;- c(&quot;replicate&quot;,&quot;group1mean&quot;,&quot;group2mean&quot;,&quot;group3mean&quot;)
+
+  # run it n times!
+  for (i in 1:n) {
+    # get the new means using my reshuffle function
+    newmeans &lt;- reshuffle(data)
+    # fill in the empty data frame
+    results[i,1:4] &lt;- c(i,newmeans)
+  }
+
+  # gimme my results
+  return(results)
+}
+
+n=100
+runagain(data)</code></pre>
+<pre><code>##     replicate group1mean group2mean group3mean
+## 1           1   21.24727   20.23837   18.74230
+## 2           2   19.20359   20.51184   20.29167
+## 3           3   20.63247   20.64067   18.55747
+## 4           4   19.46159   20.22314   20.23029
+## 5           5   20.04573   19.76052   20.39860
+## 6           6   19.07610   20.57169   20.26933
+## 7           7   19.93948   19.14772   21.11126
+## 8           8   20.33880   19.18614   20.51331
+## 9           9   20.38285   20.00953   19.64293
+## 10         10   20.47180   19.30588   20.24492
+## 11         11   20.28434   20.28781   19.46335
+## 12         12   19.92935   20.11738   20.05607
+## 13         13   20.68533   18.88243   20.52898
+## 14         14   19.87429   19.95045   20.06717
+## 15         15   19.18011   21.01399   19.71762
+## 16         16   19.67599   20.94500   19.29526
+## 17         17   18.97909   20.63205   20.40356
+## 18         18   19.66632   19.33799   20.88008
+## 19         19   19.33422   20.84274   19.62500
+## 20         20   19.96967   19.89690   20.15087
+## 21         21   21.26902   19.49407   19.33871
+## 22         22   20.64222   19.22558   20.24264
+## 23         23   19.12971   20.39475   20.58256
+## 24         24   21.54922   18.95417   19.60574
+## 25         25   19.34255   19.88349   20.65747
+## 26         26   19.75056   20.71638   19.52934
+## 27         27   20.47461   20.04822   19.40343
+## 28         28   19.70451   20.15152   20.06716
+## 29         29   20.36969   20.38707   19.26810
+## 30         30   19.77610   20.52659   19.83362
+## 31         31   21.29811   19.98548   18.95684
+## 32         32   20.24803   19.51811   20.03291
+## 33         33   20.08759   20.09491   19.83563
+## 34         34   21.00716   19.36742   19.46027
+## 35         35   19.88499   20.43169   19.50450
+## 36         36   20.47933   20.71340   18.64320
+## 37         37   18.94233   20.67622   20.57314
+## 38         38   18.90322   20.95137   19.95198
+## 39         39   20.44389   19.89918   19.48498
+## 40         40   18.41915   20.30376   21.27468
+## 41         41   19.85097   20.04067   20.32917
+## 42         42   19.92885   19.69613   20.27893
+## 43         43   19.82037   20.26685   19.71475
+## 44         44   19.80186   20.27053   19.94589
+## 45         45   20.61691   21.43135   18.15527
+## 46         46   20.75066   20.25739   19.11588
+## 47         47   20.45674   19.69733   19.96487
+## 48         48   20.53677   18.50856   20.88967
+## 49         49   19.53034   20.50504   19.97184
+## 50         50   20.04944   20.18903   19.77091
+## 51         51   20.87955   21.06992   18.18122
+## 52         52   20.27503   19.99471   19.72374
+## 53         53   20.73902   20.00405   19.37598
+## 54         54   18.87476   20.86110   20.45032
+## 55         55   19.30843   20.58192   20.10777
+## 56         56   19.83704   19.89484   20.29133
+## 57         57   20.17962   19.79536   20.06324
+## 58         58   20.68980   20.55230   18.76249
+## 59         59   20.15175   19.55191   20.10970
+## 60         60   20.28487   20.08292   19.65528
+## 61         61   19.36535   19.74416   20.78976
+## 62         62   19.43532   20.25304   20.33846
+## 63         63   19.85016   20.46623   19.78938
+## 64         64   20.36277   20.36373   19.41252
+## 65         65   19.88467   19.23269   20.70110
+## 66         66   20.21351   19.43143   20.27269
+## 67         67   19.22160   20.92417   19.77351
+## 68         68   21.49584   18.83884   19.51635
+## 69         69   20.05695   19.46982   20.57402
+## 70         70   20.71906   19.73652   19.46846
+## 71         71   19.55173   21.80777   18.75152
+## 72         72   20.55270   18.43167   20.84188
+## 73         73   19.50188   20.96335   19.36803
+## 74         74   21.44942   19.43054   18.95105
+## 75         75   20.41910   20.69209   19.00360
+## 76         76   19.63911   20.81859   19.57380
+## 77         77   20.57970   19.94780   19.36731
+## 78         78   19.95243   19.60481   20.44713
+## 79         79   19.96897   19.60550   20.33977
+## 80         80   20.00637   20.19802   19.90680
+## 81         81   19.61647   20.95269   19.55553
+## 82         82   20.55762   20.62478   19.01845
+## 83         83   20.04591   19.70407   20.13675
+## 84         84   20.79979   19.63718   19.48411
+## 85         85   19.67656   21.11152   19.41044
+## 86         86   20.06824   19.74504   20.07561
+## 87         87   20.49891   19.44845   20.16383
+## 88         88   20.55007   19.27414   20.10030
+## 89         89   19.43367   20.29177   20.26635
+## 90         90   20.47784   19.45156   20.19044
+## 91         91   19.70906   19.59276   20.50063
+## 92         92   20.54447   19.55327   20.03886
+## 93         93   20.04726   20.05791   20.09100
+## 94         94   20.31115   20.19314   19.52283
+## 95         95   19.65887   20.84247   19.49042
+## 96         96   20.69972   19.04406   20.27902
+## 97         97   18.94916   20.17047   21.11398
+## 98         98   19.12247   20.61309   20.37138
+## 99         99   19.33701   20.45411   20.33134
+## 100       100   20.93655   19.67590   19.41227</code></pre>
+<p><br/></p>
+</div>
+<div id="question-4d" class="section level5">
+<h5>Question 4d</h5>
+<pre class="r"><code>for4d</code></pre>
+<pre><code>##   group1mean group2mean group3mean
+## 1   20.93059    19.2777   19.69739</code></pre>
+<pre class="r"><code>library(ggplot2)
+
+plot &lt;- qplot(x=1:3,
+              y=for4d, 
+              geom=&quot;histogram&quot;,
+              main=&quot;Group Means&quot;,
+              xlab=&quot;Group&quot;,
+              ylab=&quot;MeanValue&quot;)</code></pre>
+<pre><code>## Warning: `qplot()` was deprecated in ggplot2 3.4.0.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre class="r"><code># plot</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+---
+title: "Homework_10"
+author: "Franny Oppenheimer"
+date: "2024-04-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Question 1
+
+```{r}
+
+counter <- 0
+vector <- c(0,1,2,3,4,5,6,0,0,4,5,6,0)
+  
+
+for (i in vector) {
+  
+  if ("0" %in% i == "TRUE") {
+  counter = counter + 1
+  }
+  
+  return(counter)
+}
+
+counter
+
+```
+
+<br/>
+
+##### Question 2
+
+```{r}
+
+vector <- c(0,1,2,3,4,5,6,0,0,4,5,6,0)
+
+countzeroes <- function(vector){
+  return(sum(vector==0))
+}
+
+countzeroes(vector)
+
+```
+
+<br/>
+
+##### Question 3
+
+```{r}
+
+getdata <- function(row,column) {
+  results <- matrix(nrow=row,ncol=column)
+  
+  for (i in 1:row) {
+    for (j in 1:column) {
+      results[i,j] <- i*j
+    }
+  }
+return(results)
+}
+
+row <- 3
+column <- 4
+data <- getdata(row,column)
+matrix <- matrix(data=data,nrow=row,ncol=column)
+
+```
+
+<br/>
+
+##### Question 4a
+
+```{r}
+
+n <- 100
+means <- c(10,20,30)
+group <- rep(1:3, each=n)
+response <- c(rnorm(n,mean=means[1]),
+              rnorm(n,mean=means[2]),
+              rnorm(n,mean=means[3]))
+
+data <- data.frame(group,response)
+data
+
+```
+
+<br/>
+
+##### Question 4b
+
+```{r}
+
+# reshuffle + get means!
+reshuffle <- function(data) {
+
+  for (i in data) {
+    shuffleresponse <- sample(data[,2])
+    shuffleresponse
+
+    # new data frame using the shuffled responses
+    data2 <- data.frame(group,shuffleresponse)
+    data2
+
+    # get means of each group
+    group1mean <- mean(data2[1:n,2])
+    group2mean <- mean(data2[n:(2*n),2])
+    group3mean <- mean(data2[(2*n):(3*n),2])
+  }
+newmeans <- data.frame(group1mean,group2mean,group3mean)
+return(newmeans)
+}
+
+# test that it works
+reshuffle(data) # it works!
+
+# save the reshuffled means for later
+for4d <- reshuffle(data) 
+
+```
+
+<br/>
+
+##### Question 4c
+
+```{r}
+
+library(tidyverse)
+
+runagain <- function(data) {
+
+  # make an empty data frame to fill in later
+  results <- data.frame(matrix(nrow=n,ncol=4))
+  colnames(results) <- c("replicate","group1mean","group2mean","group3mean")
+
+  # run it n times!
+  for (i in 1:n) {
+    # get the new means using my reshuffle function
+    newmeans <- reshuffle(data)
+    # fill in the empty data frame
+    results[i,1:4] <- c(i,newmeans)
+  }
+
+  # gimme my results
+  return(results)
+}
+
+n=100
+runagain(data)
+
+```
+
+<br/>
+
+##### Question 4d
+
+```{r}
+
+for4d
+
+library(ggplot2)
+
+plot <- qplot(x=1:3,
+              y=for4d, 
+              geom="histogram",
+              main="Group Means",
+              xlab="Group",
+              ylab="MeanValue")
+
+# plot
+
+```
+
+
