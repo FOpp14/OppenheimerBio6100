@@ -1,0 +1,51 @@
+---
+title: "Homework_11"
+author: "Franny Oppenheimer"
+date: "2024-04-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Get Barracudar ready
+
+```{r}
+# load packages ----
+library(log4r)
+library(TeachingDemos)
+library(tidyverse)
+library(pracma)
+library(ggmosaic)
+
+# source function files ----
+source("barracudar/DataTableTemplate.R")
+source("barracudar/AddFolder.R")
+source("barracudar/BuildFunction.R")
+source("barracudar/MetaDataTemplate.R")
+source("barracudar/CreatePaddedLabel.R")
+source("barracudar/InitiateSeed.R")
+source("barracudar/SetUpLog.R")
+source("barracudar/SourceBatch.R")
+
+source("barracudar/QBox.R")
+source("barracudar/QCon1.R")
+source("barracudar/QCon2.R")
+source("barracudar/QHist.R")
+source("barracudar/QLogis.R")
+source("barracudar/QScat.R")
+source("barracudar/QBub.R")
+source("barracudar/QContour.R"
+```
+
+<br/>
+
+##### Question 2
+
+```{r}
+
+
+```

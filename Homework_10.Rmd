@@ -119,9 +119,6 @@ return(newmeans)
 # test that it works
 reshuffle(data) # it works!
 
-# save the reshuffled means for later
-for4d <- reshuffle(data) 
-
 ```
 
 <br/>
@@ -151,7 +148,8 @@ runagain <- function(data) {
 }
 
 n=100
-runagain(data)
+for4d <- runagain(data)
+for4d
 
 ```
 
@@ -161,18 +159,24 @@ runagain(data)
 
 ```{r}
 
-for4d
-
 library(ggplot2)
 
-plot <- qplot(x=1:3,
-              y=for4d, 
+for4d
+
+
+plot <- qplot(data=for4d,
+              y=for4d[,2],
               geom="histogram",
               main="Group Means",
-              xlab="Group",
-              ylab="MeanValue")
+              xlim=c(0,100),
+              ylim=c(0,30),
+              xlab="Replicate",
+              ylab="Group 1 Mean Value")
 
-# plot
+plot
+
+# I'm not sure why this looks so weird
+# Repeat for each group
 
 ```
 
