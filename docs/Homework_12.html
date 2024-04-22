@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Franny Oppenheimer" />
+
+<meta name="date" content="2024-04-21" />
+
+<title>Homework_12</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Homework_12</h1>
+<h4 class="author">Franny Oppenheimer</h4>
+<h4 class="date">2024-04-21</h4>
+
+</div>
+
+
+<p><br/></p>
+<div id="read-in-the-data" class="section level5">
+<h5>Read in the data</h5>
+<pre class="r"><code># testdata is just preliminary data from my work
+data &lt;- read.csv(&quot;testdata.csv&quot;,header=TRUE,sep=&quot;,&quot;)
+data &lt;- data.frame(data)
+data</code></pre>
+<pre><code>##        X     File.found.in...wav. Theme Phrase Unit.initial.name Unit.code
+## 1   2021       PAN-07Feb2021-0001    NA     NA                 1     21312
+## 2   2021       PAN-07Feb2021-0001    NA     NA                 2     21312
+## 3   2021       PAN-07Feb2021-0001    NA     NA                 3     21212
+## 4   2021       PAN-07Feb2021-0001    NA     NA                 4     31212
+## 5   2021       PAN-07Feb2021-0001    NA     NA                 5     31212
+## 6   2021       PAN-07Feb2021-0001    NA     NA                 6     21212
+## 7   2021       PAN-07Feb2021-0001    NA     NA                 7     21312
+## 8   2021       PAN-07Feb2021-0001    NA     NA                 8     21311
+## 9   2021       PAN-07Feb2021-0001    NA     NA                 9     21311
+## 10  2021       PAN-07Feb2021-0001    NA     NA                10     21311
+## 11  2021       PAN-07Feb2021-0001    NA     NA                11     21211
+## 12  2021       PAN-07Feb2021-0001    NA     NA                12     21211
+## 13  2021       PAN-07Feb2021-0001    NA     NA                13     21311
+## 14  2021       PAN-07Feb2021-0001    NA     NA                14     21212
+## 15  2021       PAN-07Feb2021-0001    NA     NA                15     41212
+## 16  2021       PAN-07Feb2021-0001    NA     NA                16     21211
+## 17  2021       PAN-07Feb2021-0001    NA     NA                17     21211
+## 18  2021       PAN-07Feb2021-0001    NA     NA                18     21211
+## 19  2021       PAN-07Feb2021-0001    NA     NA                19     41311
+## 20  2021       PAN-07Feb2021-0001    NA     NA                20     21311
+## 21  2021       PAN-07Feb2021-0001    NA     NA                21     21311
+## 22  2021       PAN-07Feb2021-0001    NA     NA                22     21311
+## 23  2021       PAN-07Feb2021-0001    NA     NA                23     41312
+## 24  2021       PAN-07Feb2021-0001    NA     NA                24     21312
+## 25  2021       PAN-07Feb2021-0001    NA     NA                25     21311
+## 26  2021       PAN-07Feb2021-0001    NA     NA                26     21311
+## 27  2021       PAN-07Feb2021-0001    NA     NA                27     21311
+## 28  2021       PAN-07Feb2021-0001    NA     NA                28     21311
+## 29  2021       PAN-07Feb2021-0001    NA     NA                29     21311
+## 30  2021       PAN-07Feb2021-0001    NA     NA                30     71213
+## 31  2021       PAN-09FEB2021_0013    NA     NA                 1     11213
+## 32  2021       PAN-09FEB2021_0013    NA     NA                 2     11213
+## 33  2021       PAN-09FEB2021_0013    NA     NA                 3     11213
+## 34  2021       PAN-09FEB2021_0013    NA     NA                 4     11113
+## 35  2022 Secas_08Mar2022_ZOOM0036    NA     NA                 1     71321
+## 36  2022 Secas_08Mar2022_ZOOM0036    NA     NA                 2     41221
+## 37  2022 Secas_08Mar2022_ZOOM0036    NA     NA                 3     41221
+## 38  2022 Secas_08Mar2022_ZOOM0036    NA     NA                 4     71221
+## 39  2023     PAN-005 July 31 2023    NA     NA                 1     31213
+## 40  2023     PAN-005 July 31 2023    NA     NA                 2     71211
+## 41  2023     PAN-005 July 31 2023    NA     NA                 3     11221
+## 42  2023     PAN-005 July 31 2023    NA     NA                 4     71211
+## 43  2023     PAN-005 July 31 2023    NA     NA                 5     61311
+## 44  2023     PAN-005 July 31 2023    NA     NA                 6     12221
+## 45  2023     PAN-005 July 31 2023    NA     NA                 7     41211
+## 46  2023     PAN-005 July 31 2023    NA     NA                 8     11221
+## 47  2023     PAN-005 July 31 2023    NA     NA                 9     31211
+## 48  2023     PAN-005 July 31 2023    NA     NA                10     71211
+## 49  2023     PAN-005 July 31 2023    NA     NA                11     71211
+## 50  2023     PAN-005 July 31 2023    NA     NA                12     41221
+## 51  2023     PAN-005 July 31 2023    NA     NA                13     31211
+## 52  2023     PAN-005 July 31 2023    NA     NA                14     31211
+## 53  2023     PAN-005 July 31 2023    NA     NA                15     61211
+## 54  2023     PAN-005 July 31 2023    NA     NA                16        NA
+## 55  2023     PAN-005 July 31 2023    NA     NA                17     62211
+## 56  2023     PAN-005 July 31 2023    NA     NA                18     71211
+## 57  2023     PAN-005 July 31 2023    NA     NA                19     71211
+## 58  2023     PAN-005 July 31 2023    NA     NA                20     31211
+## 59  2023     PAN-005 July 31 2023    NA     NA                21     31211
+## 60  2023     PAN-005 July 31 2023    NA     NA                22     31211
+## 61  2023     PAN-005 July 31 2023    NA     NA                23     31211
+## 62  2023     PAN-005 July 31 2023    NA     NA                24     11211
+## 63  2023     PAN-005 July 31 2023    NA     NA                25     11211
+## 64  2023     PAN-005 July 31 2023    NA     NA                26     31211
+## 65  2023     PAN-005 July 31 2023    NA     NA                27     11211
+## 66  2023     PAN-005 July 31 2023    NA     NA                28     11211
+## 67  2023     PAN-005 July 31 2023    NA     NA                29     71211
+## 68  2023     PAN-005 July 31 2023    NA     NA                30     71211
+## 69    NA                             NA     NA                NA        NA
+## 70  2023     PAN-005 July 31 2023    NA     NA                32     11311
+## 71  2023     PAN-005 July 31 2023    NA     NA                33     11211
+## 72  2023     PAN-005 July 31 2023    NA     NA                34     11211
+## 73  2023     PAN-005 July 31 2023    NA     NA                35     12211
+## 74  2023     PAN-005 July 31 2023    NA     NA                36     11211
+## 75  2023     PAN-005 July 31 2023    NA     NA                37     31211
+## 76  2023     PAN-005 July 31 2023    NA     NA                38     11212
+## 77  2023     PAN-005 July 31 2023    NA     NA                39     11211
+## 78  2023     PAN-005 July 31 2023    NA     NA                40        NA
+## 79  2023     PAN-005 July 31 2023    NA     NA                41     41211
+## 80  2023     PAN-005 July 31 2023    NA     NA                42     11211
+## 81  2023     PAN-005 July 31 2023    NA     NA                43     31211
+## 82  2023     PAN-005 July 31 2023    NA     NA                44     12211
+## 83  2023     PAN-005 July 31 2023    NA     NA                45     11312
+## 84  2023     PAN-005 July 31 2023    NA     NA                46     11211
+## 85  2023     PAN-005 July 31 2023    NA     NA                47     21211
+## 86  2023     PAN-005 July 31 2023    NA     NA                48     61211
+## 87  2023     PAN-005 July 31 2023    NA     NA                49     31211
+## 88  2023     PAN-005 July 31 2023    NA     NA                50     11211
+## 89  2023     PAN-005 July 31 2023    NA     NA                51     31211
+## 90  2023     PAN-005 July 31 2023    NA     NA                52     61211
+## 91  2023     PAN-005 July 31 2023    NA     NA                53     31211
+## 92  2023     PAN-005 July 31 2023    NA     NA                54     31211
+## 93  2023     PAN-005 July 31 2023    NA     NA                55     31211
+## 94  2023     PAN-005 July 31 2023    NA     NA                56     61211
+## 95  2023     PAN-005 July 31 2023    NA     NA                57     12211
+## 96  2023     PAN-005 July 31 2023    NA     NA                58     11211
+## 97  2023     PAN-005 July 31 2023    NA     NA                59     11211
+## 98  2023     PAN-005 July 31 2023    NA     NA                60     61211
+## 99  2023     PAN-005 July 31 2023    NA     NA                61     31211
+## 100 2023     PAN-005 July 31 2023    NA     NA                62     61211
+## 101 2023     PAN-005 July 31 2023    NA     NA                63     12211
+## 102 2023     PAN-005 July 31 2023    NA     NA                64     11211
+## 103 2023     PAN-005 July 31 2023    NA     NA                65     61211
+## 104 2023     PAN-005 July 31 2023    NA     NA                66     12211
+## 105 2023     PAN-005 July 31 2023    NA     NA                67     11211
+## 106 2023     PAN-005 July 31 2023    NA     NA                68     61211
+## 107 2023     PAN-005 July 31 2023    NA     NA                69     41211
+## 108 2023     PAN-005 July 31 2023    NA     NA                70     13221
+## 109 2023     PAN-005 July 31 2023    NA     NA                71     13221
+## 110 2023     PAN-005 July 31 2023    NA     NA                72     12221
+## 111 2023     PAN-005 July 31 2023    NA     NA                73     13221
+## 112 2023     PAN-005 July 31 2023    NA     NA                74     13221
+## 113 2023     PAN-005 July 31 2023    NA     NA                75     11221
+## 114 2023     PAN-005 July 31 2023    NA     NA                76     13231
+## 115 2023     PAN-005 July 31 2023    NA     NA                77     11211
+## 116 2023     PAN-005 July 31 2023    NA     NA                78     11221
+## 117 2023     PAN-005 July 31 2023    NA     NA                79     11221
+## 118 2023     PAN-005 July 31 2023    NA     NA                80     11221
+## 119 2023     PAN-005 July 31 2023    NA     NA                81     12211
+## 120 2023     PAN-005 July 31 2023    NA     NA                82     41221
+## 121 2023     PAN-005 July 31 2023    NA     NA                83     42321
+## 122 2023     PAN-005 July 31 2023    NA     NA                84     61221
+## 123 2023     PAN-005 July 31 2023    NA     NA                85     41211
+## 124 2023     PAN-005 July 31 2023    NA     NA                86     61221
+## 125 2023     PAN-005 July 31 2023    NA     NA                87     41221
+## 126 2023     PAN-005 July 31 2023    NA     NA                88     61211
+## 127 2023     PAN-005 July 31 2023    NA     NA                89     41221
+## 128 2023     PAN-005 July 31 2023    NA     NA                90     61221
+## 129 2023     PAN-005 July 31 2023    NA     NA                91     41221
+## 130 2023     PAN-005 July 31 2023    NA     NA                92     31221
+## 131 2023     PAN-005 July 31 2023    NA     NA                93     11123
+## 132 2023     PAN-005 July 31 2023    NA     NA                94     31221
+## 133 2023     PAN-005 July 31 2023    NA     NA                95     43221
+## 134 2023     PAN-005 July 31 2023    NA     NA                96     31221
+## 135 2023     PAN-005 July 31 2023    NA     NA                97     71211
+## 136 2023     PAN-005 July 31 2023    NA     NA                98     61121
+## 137 2023     PAN-005 July 31 2023    NA     NA                99     41221
+## 138 2023     PAN-005 July 31 2023    NA     NA               100     71221
+## 139 2023     PAN-005 July 31 2023    NA     NA               101     41221
+## 140   NA                             NA     NA                NA        NA
+## 141 2023     PAN-005 July 31 2023    NA     NA               103     71211
+## 142 2023     PAN-005 July 31 2023    NA     NA               104     61221
+## 143 2023     PAN-005 July 31 2023    NA     NA               105     71211
+## 144 2023     PAN-005 July 31 2023    NA     NA               106     71221
+## 145 2023     PAN-005 July 31 2023    NA     NA               107     71111
+## 146 2023     PAN-005 July 31 2023    NA     NA               108     71221
+## 147 2023     PAN-005 July 31 2023    NA     NA               109     61211
+## 148 2023     PAN-005 July 31 2023    NA     NA               110     71221
+## 149 2023     PAN-005 July 31 2023    NA     NA               111     71211
+## 150 2023     PAN-005 July 31 2023    NA     NA               112     71221
+## 151 2023     PAN-005 July 31 2023    NA     NA               113     71211
+## 152 2023     PAN-005 July 31 2023    NA     NA               114     71221
+## 153 2023     PAN-005 July 31 2023    NA     NA               115     71211
+## 154 2023     PAN-005 July 31 2023    NA     NA               116     31221
+## 155 2023     PAN-005 July 31 2023    NA     NA               117     31221
+## 156 2023     PAN-005 July 31 2023    NA     NA               118     11221
+## 157 2023     PAN-005 July 31 2023    NA     NA               119     41221
+## 158 2023     PAN-005 July 31 2023    NA     NA               120     11211
+## 159 2023     PAN-005 July 31 2023    NA     NA               121     71221
+## 160 2023     PAN-005 July 31 2023    NA     NA               122     11211
+## 161 2023     PAN-005 July 31 2023    NA     NA               123     11211
+## 162 2023     PAN-005 July 31 2023    NA     NA               124     61221
+## 163 2023     PAN-005 July 31 2023    NA     NA               125     61221
+## 164   NA                             NA     NA                NA        NA
+## 165 2023     PAN-005 July 31 2023    NA     NA               127     13221
+## 166 2023     PAN-005 July 31 2023    NA     NA               128     13221
+## 167 2023     PAN-005 July 31 2023    NA     NA               129     11221
+## 168 2023     PAN-005 July 31 2023    NA     NA               130     13221
+## 169 2023     PAN-005 July 31 2023    NA     NA               131     13221
+## 170 2023     PAN-005 July 31 2023    NA     NA               132     11211
+## 171 2023     PAN-005 July 31 2023    NA     NA               133     11221
+## 172 2023     PAN-005 July 31 2023    NA     NA               134     11221
+## 173 2023     PAN-005 July 31 2023    NA     NA               135     11221
+## 174 2023     PAN-005 July 31 2023    NA     NA               136     11211
+## 175 2023     PAN-005 July 31 2023    NA     NA               137     11221
+## 176 2023     PAN-005 July 31 2023    NA     NA               138     11221
+## 177 2023     PAN-005 July 31 2023    NA     NA               139     11221
+## 178 2023     PAN-005 July 31 2023    NA     NA               140     11221
+## 179 2023     PAN-005 July 31 2023    NA     NA               141     11221
+## 180 2023     PAN-005 July 31 2023    NA     NA               142        NA
+## 181 2023     PAN-005 July 31 2023    NA     NA               143     11221
+## 182   NA                             NA     NA                NA        NA
+## 183 2023     PAN-005 July 31 2023    NA     NA               145     11221
+## 184 2023     PAN-005 July 31 2023    NA     NA               146     11221
+## 185 2023     PAN-005 July 31 2023    NA     NA               147     41211
+## 186 2023     PAN-005 July 31 2023    NA     NA               148     31221
+## 187 2023     PAN-005 July 31 2023    NA     NA               149     41221
+## 188 2023     PAN-005 July 31 2023    NA     NA               150     11221
+## 189 2023     PAN-005 July 31 2023    NA     NA               151     41211
+## 190 2023     PAN-005 July 31 2023    NA     NA               152     31221
+## 191 2023     PAN-005 July 31 2023    NA     NA               153     41211
+## 192 2023     PAN-005 July 31 2023    NA     NA               154     31211
+## 193 2023     PAN-005 July 31 2023    NA     NA               155     41211
+## 194 2023     PAN-005 July 31 2023    NA     NA               156     31221
+## 195 2023     PAN-005 July 31 2023    NA     NA               157     41221
+## 196 2023     PAN-005 July 31 2023    NA     NA               158     21211
+## 197 2023     PAN-005 July 31 2023    NA     NA               159     31221
+## 198 2023     PAN-005 July 31 2023    NA     NA               160     41211
+## 199 2023     PAN-005 July 31 2023    NA     NA               161     41211
+## 200 2023     PAN-005 July 31 2023    NA     NA               162     71211
+## 201 2023     PAN-005 July 31 2023    NA     NA               163     21211
+## 202 2023     PAN-005 July 31 2023    NA     NA               164     51211
+## 203 2023     PAN-005 July 31 2023    NA     NA               165     12221
+## 204 2023     PAN-005 July 31 2023    NA     NA               166     12221
+## 205 2023     PAN-005 July 31 2023    NA     NA               167     11211
+## 206 2023     PAN-005 July 31 2023    NA     NA               168     12221
+## 207 2023     PAN-005 July 31 2023    NA     NA               169     11221
+## 208 2023     PAN-005 July 31 2023    NA     NA               170     12221
+## 209 2023     PAN-005 July 31 2023    NA     NA               171     13211
+## 210 2023     PAN-005 July 31 2023    NA     NA               172     11213
+## 211 2023     PAN-005 July 31 2023    NA     NA               173     11231
+## 212 2023     PAN-005 July 31 2023    NA     NA               174     11221
+## 213 2023     PAN-005 July 31 2023    NA     NA               175     32221
+## 214 2023     PAN-005 July 31 2023    NA     NA               176     12221
+## 215 2023     PAN-005 July 31 2023    NA     NA               177     12221
+## 216 2023     PAN-005 July 31 2023    NA     NA               178     11221
+## 217 2023     PAN-005 July 31 2023    NA     NA               179     41221
+## 218 2023     PAN-005 July 31 2023    NA     NA               180     11221
+## 219 2023     PAN-005 July 31 2023    NA     NA               181     11221
+## 220 2023     PAN-005 July 31 2023    NA     NA               182     11221
+## 221 2023     PAN-005 July 31 2023    NA     NA               183     41211
+## 222 2023     PAN-005 July 31 2023    NA     NA               184     11221
+## 223 2023     PAN-005 July 31 2023    NA     NA               185     41211
+## 224 2023     PAN-005 July 31 2023    NA     NA               186     31211
+## 225 2023     PAN-005 July 31 2023    NA     NA               187     41211
+## 226 2023     PAN-005 July 31 2023    NA     NA               188     11221
+## 227 2023     PAN-005 July 31 2023    NA     NA               189     21211
+## 228 2023     PAN-005 July 31 2023    NA     NA               190     21211
+## 229 2023     PAN-005 July 31 2023    NA     NA               191     21221
+## 230 2023     PAN-005 July 31 2023    NA     NA               192     21211
+## 231 2023     PAN-005 July 31 2023    NA     NA               193     11221
+## 232 2023     PAN-005 July 31 2023    NA     NA               194     13221
+## 233 2023       PAN-006 Aug 1 2023    NA     NA                 1     11221
+## 234 2023       PAN-006 Aug 1 2023    NA     NA                 2     11221
+## 235 2023       PAN-006 Aug 1 2023    NA     NA                 3     11221
+## 236 2023       PAN-006 Aug 1 2023    NA     NA                 4     11221
+## 237 2023       PAN-006 Aug 1 2023    NA     NA                 5     11221
+## 238 2023       PAN-006 Aug 1 2023    NA     NA                 6     31322
+## 239 2023       PAN-006 Aug 1 2023    NA     NA                 7     11221
+## 240 2023       PAN-006 Aug 1 2023    NA     NA                 8     31222
+## 241 2023       PAN-006 Aug 1 2023    NA     NA                 9     11221
+## 242 2023       PAN-006 Aug 1 2023    NA     NA                10     31222
+## 243 2023       PAN-006 Aug 1 2023    NA     NA                11     11211
+## 244 2023       PAN-006 Aug 1 2023    NA     NA                12     31222
+## 245 2023       PAN-006 Aug 1 2023    NA     NA                13     21311
+## 246 2023       PAN-006 Aug 1 2023    NA     NA                14     11212
+## 247 2023       PAN-006 Aug 1 2023    NA     NA                15     21223
+## 248 2023       PAN-006 Aug 1 2023    NA     NA                16     11221
+## 249 2023       PAN-006 Aug 1 2023    NA     NA                17     11221
+## 250 2023       PAN-006 Aug 1 2023    NA     NA                18     11211
+## 251 2023       PAN-006 Aug 1 2023    NA     NA                19     11221
+## 252 2023       PAN-006 Aug 1 2023    NA     NA                20     21211
+## 253 2023       PAN-006 Aug 1 2023    NA     NA                21     31211
+## 254 2023       PAN-006 Aug 1 2023    NA     NA                22     21211
+## 255 2023       PAN-006 Aug 1 2023    NA     NA                23     31221
+## 256 2023       PAN-006 Aug 1 2023    NA     NA                24     21221
+## 257 2023       PAN-006 Aug 1 2023    NA     NA                25     21211
+## 258 2023       PAN-006 Aug 1 2023    NA     NA                26     21211
+## 259 2023       PAN-006 Aug 1 2023    NA     NA                27     21211
+## 260 2023       PAN-006 Aug 1 2023    NA     NA                28     21211
+## 261 2023       PAN-006 Aug 1 2023    NA     NA                29     21211
+## 262 2023       PAN-006 Aug 1 2023    NA     NA                30     11221
+##         contour tone.type peak.frequency..Hz. duration..s. harmonics Megan
+## 1     downsweep     tonal            5501.976    5501.9760    sparse    NA
+## 2     downsweep     tonal            5169.960       0.1777    sparse    NA
+## 3     downsweep     tonal            3699.605       0.3164    sparse    NA
+## 4          flat     tonal            2893.281       0.2210    sparse    NA
+## 5          flat     tonal            2703.557       0.1690    sparse    NA
+## 6     downsweep     tonal            2988.142       0.0910    sparse    NA
+## 7     downsweep     tonal            5217.391       0.2123    sparse    NA
+## 8     downsweep     tonal           12332.016       0.3814     dense    NA
+## 9     downsweep     tonal            8395.257       0.2210     dense    NA
+## 10    downsweep     tonal            8110.672       0.3554     dense    NA
+## 11    downsweep     tonal            3415.020       0.2644     dense    NA
+## 12    downsweep     tonal            4126.482       0.3554     dense    NA
+## 13    downsweep     tonal            5644.269       0.2644     dense    NA
+## 14    downsweep     tonal            3936.759       0.1257    sparse    NA
+## 15          arc     tonal            2656.126       0.2644    sparse    NA
+## 16    downsweep     tonal            3699.605       0.2947     dense    NA
+## 17    downsweep     tonal            2845.850       0.2384     dense    NA
+## 18    downsweep     tonal            2893.281       0.1127     dense    NA
+## 19          arc     tonal            5501.976       0.1517     dense    NA
+## 20    downsweep     tonal            5596.838       0.1647     dense    NA
+## 21    downsweep     tonal            6687.747       0.1863     dense    NA
+## 22    downsweep     tonal            5928.854       0.1863     dense    NA
+## 23          arc     tonal            6308.300       0.1690    sparse    NA
+## 24    downsweep     tonal            5739.130       0.1950    sparse    NA
+## 25    downsweep     tonal            5691.700       0.1907     dense    NA
+## 26    downsweep     tonal            5312.253       0.1647     dense    NA
+## 27    downsweep     tonal            5644.269       0.1560     dense    NA
+## 28    downsweep     tonal            6023.715       0.1647     dense    NA
+## 29    downsweep     tonal            5407.115       0.1690     dense    NA
+## 30  freq-var nt     tonal            1660.079       0.2037      none    NA
+## 31      upsweep     tonal            2594.595       0.2506      none    NA
+## 32      upsweep     tonal            1179.361       0.5362      none    NA
+## 33      upsweep     tonal            1297.297       0.2967      none    NA
+## 34      upsweep     tonal            1061.425       0.2359      none    NA
+## 35  freq-var nt     tonal            5194.805       3.3875     dense    NA
+## 36          arc     tonal            4571.429       1.4074     dense    NA
+## 37          arc     tonal            4155.844       0.8347     dense    NA
+## 38  freq-var nt     tonal            4779.221       2.4990     dense    NA
+## 39         flat     tonal            2567.901       0.0518      none    NA
+## 40  freq-var nt     tonal            2666.667       0.2591     dense    NA
+## 41      upsweep     tonal            2172.840       1.1836     dense    NA
+## 42  freq-var nt     tonal            2962.963       0.7658     dense    NA
+## 43   freq-var t     tonal            5728.395       0.7237     dense    NA
+## 44      upsweep    pulsed            4938.272       1.4669     dense    NA
+## 45          arc     tonal            3061.728       0.4954     dense    NA
+## 46      upsweep     tonal            2469.136       1.1197     dense    NA
+## 47         flat     tonal            1580.247       0.1786     dense    NA
+## 48  freq-var nt     tonal            2864.198       0.2793     dense    NA
+## 49  freq-var nt     tonal            3555.556       0.3251     dense    NA
+## 50          arc     tonal            1777.778       1.1266     dense    NA
+## 51         flat     tonal            1975.309       0.3389     dense    NA
+## 52         flat     tonal            1975.309       0.2015     dense    NA
+## 53   freq-var t     tonal            3555.556       0.3549     dense    NA
+## 54                                         NA           NA              NA
+## 55   freq-var t    pulsed            2271.605       0.1580     dense    NA
+## 56  freq-var nt     tonal            3851.852       0.1809     dense    NA
+## 57  freq-var nt     tonal            2074.074       0.3137     dense    NA
+## 58         flat     tonal            2765.432       0.2152     dense    NA
+## 59         flat     tonal            1876.543       0.3000     dense    NA
+## 60         flat     tonal            3358.025       0.3618     dense    NA
+## 61         flat     tonal            2370.370       0.3526     dense    NA
+## 62      upsweep     tonal            2370.370       0.1145     dense    NA
+## 63      upsweep     tonal            2370.370       0.4763     dense    NA
+## 64         flat     tonal            2765.432       0.1465     dense    NA
+## 65      upsweep     tonal            5432.099       0.1305     dense    NA
+## 66      upsweep     tonal            2864.198       0.1534     dense    NA
+## 67  freq-var nt     tonal            4839.506       0.2221     dense    NA
+## 68  freq-var nt     tonal            3358.025       0.1763     dense    NA
+## 69                                         NA           NA              NA
+## 70      upsweep     tonal            6123.457       0.0893     dense    NA
+## 71      upsweep     tonal            1975.309       0.5060     dense    NA
+## 72      upsweep     tonal            2765.432       0.3045     dense    NA
+## 73      upsweep    pulsed            2469.136       0.1076     dense    NA
+## 74      upsweep     tonal            3654.321       0.1305     dense    NA
+## 75         flat     tonal            2666.667       0.3251     dense    NA
+## 76      upsweep     tonal            3160.494       0.1420    sparse    NA
+## 77      upsweep     tonal            4049.383       0.1191     dense    NA
+## 78                                         NA           NA              NA
+## 79          arc     tonal            4148.148       0.7052     dense    NA
+## 80      upsweep     tonal            2567.901       0.1351     dense    NA
+## 81         flat     tonal            3061.728       0.1878     dense    NA
+## 82      upsweep    pulsed            2864.198       0.1580     dense    NA
+## 83      upsweep     tonal            6123.457       0.1030    sparse    NA
+## 84      upsweep     tonal            2172.840       0.5198     dense    NA
+## 85    downsweep     tonal            2172.840       0.2542     dense    NA
+## 86   freq-var t     tonal            2765.432       0.2931     dense    NA
+## 87         flat     tonal            2271.605       0.1534     dense    NA
+## 88      upsweep     tonal            4148.148       0.1145     dense    NA
+## 89         flat     tonal            2666.667       0.1328     dense    NA
+## 90   freq-var t     tonal            2666.667       0.4053     dense    NA
+## 91         flat     tonal            2469.136       0.1672     dense    NA
+## 92         flat     tonal            2666.667       0.1282     dense    NA
+## 93         flat     tonal            2370.370       0.1145     dense    NA
+## 94   freq-var t     tonal            2370.370       0.3435     dense    NA
+## 95      upsweep    pulsed            2567.901       0.1488     dense    NA
+## 96      upsweep     tonal            4641.975       0.1236     dense    NA
+## 97      upsweep     tonal            2469.136       0.5083     dense    NA
+## 98   freq-var t     tonal            2765.432       0.3000     dense    NA
+## 99         flat     tonal            2567.901       0.1511     dense    NA
+## 100  freq-var t     tonal            2765.432       0.3664     dense    NA
+## 101     upsweep    pulsed            2666.667       0.1351     dense    NA
+## 102     upsweep     tonal            4049.383       0.1832     dense    NA
+## 103  freq-var t     tonal            2962.963       0.3503     dense    NA
+## 104     upsweep    pulsed            2271.605       0.1397     dense    NA
+## 105     upsweep     tonal            4345.679       0.0962     dense    NA
+## 106  freq-var t     tonal            4641.975       0.3503     dense    NA
+## 107         arc     tonal            1481.481       0.5770     dense    NA
+## 108     upsweep     mixed            1876.543       4.3780     dense    NA
+## 109     upsweep     mixed            2469.136       5.4402     dense    NA
+## 110     upsweep    pulsed            2469.136       1.1269     dense    NA
+## 111     upsweep     mixed            3259.259       4.1967     dense    NA
+## 112     upsweep     mixed            3753.086       5.4661     dense    NA
+## 113     upsweep     tonal            2666.667       1.4507     dense    NA
+## 114     upsweep     mixed            3160.494       3.0050     dense    NA
+## 115     upsweep     tonal            4641.975       1.2046     dense    NA
+## 116     upsweep     tonal            3950.617       1.0103     dense    NA
+## 117     upsweep     tonal            4148.148       1.1528     dense    NA
+## 118     upsweep     tonal            4246.914       1.5932     dense    NA
+## 119     upsweep    pulsed            4049.383       1.1852     dense    NA
+## 120         arc     tonal            6123.457       1.5479     dense    NA
+## 121         arc    pulsed            4345.679       0.7448     dense    NA
+## 122  freq-var t     tonal            3654.321       1.5997     dense    NA
+## 123         arc     tonal            3358.025       0.9326     dense    NA
+## 124  freq-var t     tonal            4345.679       1.3082     dense    NA
+## 125         arc     tonal            3358.025       1.1334     dense    NA
+## 126  freq-var t     tonal            2962.963       0.9974     dense    NA
+## 127         arc     tonal            3555.556       1.1722     dense    NA
+## 128  freq-var t     tonal            2765.432       1.5025     dense    NA
+## 129         arc     tonal            4444.444       1.1075     dense    NA
+## 130        flat     tonal            2765.432       2.5452     dense    NA
+## 131     upsweep     tonal            1679.012       1.0751      nonr    NA
+## 132        flat     tonal            1679.012       1.1593     dense    NA
+## 133         arc     mixed            2864.198       1.4766     dense    NA
+## 134        flat     tonal            2567.901       1.8458     dense    NA
+## 135 freq-var nt     tonal            3259.259       0.9844     dense    NA
+## 136  freq-var t     tonal            2666.667       1.1528     dense    NA
+## 137         arc     tonal            3160.494       1.0686     dense    NA
+## 138 freq-var nt     tonal            2864.198       1.2046     dense    NA
+## 139         arc     tonal            3061.728       0.9715     dense    NA
+## 140                                        NA           NA              NA
+## 141 freq-var nt     tonal            2370.370       0.8549     dense    NA
+## 142  freq-var t     tonal            3061.728       1.2888     dense    NA
+## 143 freq-var nt     tonal            2074.074       0.4145     dense    NA
+## 144 freq-var nt     tonal            3358.025       1.0816     dense    NA
+## 145 freq-var nt     tonal            3061.728       0.9779     dense    NA
+## 146 freq-var nt     tonal            2567.901       1.5867     dense    NA
+## 147  freq-var t     tonal            2567.901       1.0751     dense    NA
+## 148 freq-var nt     tonal            2765.432       1.1593     dense    NA
+## 149 freq-var nt     tonal            3061.728       1.0945     dense    NA
+## 150 freq-var nt     tonal            2765.432       1.1204     dense    NA
+## 151 freq-var nt     tonal            2864.198       0.8095     dense    NA
+## 152 freq-var nt     tonal            2370.370       2.3185     dense    NA
+## 153 freq-var nt     tonal            3160.494       0.9067     dense    NA
+## 154        flat     tonal            2644.898       1.1075     dense    NA
+## 155        flat     tonal            2351.020       1.3471     dense    NA
+## 156     upsweep     tonal            1766.234       1.8652     dense    NA
+## 157         arc     tonal            1766.234       2.7006     dense    NA
+## 158     upsweep     tonal            2285.714       0.7318     dense    NA
+## 159 freq-var nt     tonal            2493.506       3.3159     dense    NA
+## 160     upsweep     tonal            1558.442       0.8743     dense    NA
+## 161     upsweep     tonal            1558.442       0.8290     dense    NA
+## 162  freq-var t     tonal            2493.506       3.6009     dense    NA
+## 163  freq-var t     tonal            2389.610       1.0492     dense    NA
+## 164                                        NA           NA              NA
+## 165     upsweep     mixed            1766.234       4.5723     dense    NA
+## 166     upsweep     mixed            2077.922       5.7834     dense    NA
+## 167     upsweep     tonal            1662.338       1.1010     dense    NA
+## 168     upsweep     mixed            2077.922       3.8793     dense    NA
+## 169     upsweep     mixed            1662.338       5.6539     dense    NA
+## 170     upsweep     tonal            1662.338       0.8614     dense    NA
+## 171     upsweep     tonal            1974.026       2.0271     dense    NA
+## 172     upsweep     tonal            2077.922       2.5646     dense    NA
+## 173     upsweep     tonal            2805.195       1.1463     dense    NA
+## 174     upsweep     tonal            1870.130       0.6930     dense    NA
+## 175     upsweep     tonal            2181.818       1.7162     dense    NA
+## 176     upsweep     tonal            1974.026       2.2603     dense    NA
+## 177     upsweep     tonal            1974.026       1.0556     dense    NA
+## 178     upsweep     tonal            2077.922       1.0038     dense    NA
+## 179     upsweep     tonal            2285.714       1.1075     dense    NA
+## 180                                        NA           NA              NA
+## 181     upsweep     tonal            3948.052       1.2377     dense    NA
+## 182                                        NA           NA              NA
+## 183     upsweep     tonal            2909.091       2.5323     dense    NA
+## 184     upsweep     tonal            2701.299       1.1787     dense    NA
+## 185         arc     tonal            3636.364       0.6217     dense    NA
+## 186        flat     tonal            2389.610       1.4313     dense    NA
+## 187         arc     tonal            3220.779       1.0233     dense    NA
+## 188     upsweep     tonal            2909.091       1.0880     dense    NA
+## 189         arc     tonal            3324.675       0.9974     dense    NA
+## 190        flat     tonal            2805.195       1.8263     dense    NA
+## 191         arc     tonal            3012.987       0.9650     dense    NA
+## 192        flat     tonal            2181.818       0.9261     dense    NA
+## 193         arc     tonal            2805.195       0.9974     dense    NA
+## 194        flat     tonal            2493.506       1.7098     dense    NA
+## 195         arc     tonal            3532.468       1.0103     dense    NA
+## 196   downsweep     tonal            2701.299       0.8614     dense    NA
+## 197        flat     tonal            2077.922       1.0751     dense    NA
+## 198         arc     tonal            3012.987       0.8873     dense    NA
+## 199         arc     tonal            2909.091       0.9067     dense    NA
+## 200 freq-var nt     tonal            2909.091       0.9974     dense    NA
+## 201   downsweep     tonal            2597.403       0.8549     dense    NA
+## 202     u-shape     tonal            2805.195       0.8419     dense    NA
+## 203     upsweep    pulsed            2285.714       1.4054     dense    NA
+## 204     upsweep    pulsed            1974.026       1.7745     dense    NA
+## 205     upsweep     tonal            2181.818       0.9520     dense    NA
+## 206     upsweep    pulsed            2493.506       1.3730     dense    NA
+## 207     upsweep     tonal            1974.026       1.4960     dense    NA
+## 208     upsweep    pulsed            2077.922       1.4701     dense    NA
+## 209     upsweep     mixed            2077.922       0.9132     dense    NA
+## 210     upsweep     tonal            2077.922       0.6282      none    NA
+## 211     upsweep     tonal            2597.403       0.1360     dense    NA
+## 212     upsweep     tonal            1454.545       1.0362     dense    NA
+## 213        flat    pulsed            1454.545       1.2435     dense    NA
+## 214     upsweep    pulsed            1838.298       2.6100     dense    NA
+## 215     upsweep    pulsed            1838.298       2.0077     dense    NA
+## 216     upsweep     tonal            2144.681       2.8367     dense    NA
+## 217         arc     tonal            2348.936       1.4960     dense    NA
+## 218     upsweep     tonal            2348.936       1.3795     dense    NA
+## 219     upsweep     tonal            2655.319       1.8458     dense    NA
+## 220     upsweep     tonal            2348.936       1.0492     dense    NA
+## 221         arc     tonal            3472.340       0.7254     dense    NA
+## 222     upsweep     tonal            2961.702       1.1981     dense    NA
+## 223         arc     tonal            3676.596       0.7448     dense    NA
+## 224        flat     tonal            3063.830       1.9300     dense    NA
+## 225         arc     tonal            3370.213       0.9650     dense    NA
+## 226     upsweep     tonal            2451.064       1.0103     dense    NA
+## 227   downsweep     tonal            2348.936       0.8484     dense    NA
+## 228   downsweep     tonal            3370.213       0.9715     dense    NA
+## 229   downsweep     tonal            2859.574       1.0168     dense    NA
+## 230   downsweep     tonal            3165.957       0.9326     dense    NA
+## 231     upsweep     tonal            2144.681       1.4960     dense    NA
+## 232     upsweep     mixed            2451.064       6.3792     dense    NA
+## 233     upsweep     tonal            3428.571       2.9066     dense    NA
+## 234     upsweep     tonal            2389.610       1.2535     dense    NA
+## 235     upsweep     tonal            2597.403       1.2699     dense    NA
+## 236     upsweep     tonal            1662.338       1.1112     dense    NA
+## 237     upsweep     tonal            1870.130       0.9524     dense    NA
+## 238        flat     tonal            6233.766       2.7643    sparse    NA
+## 239     upsweep     tonal            2909.091       1.4725     dense    NA
+## 240        flat     tonal            3948.052       1.8173    sparse    NA
+## 241     upsweep     tonal            1974.026       1.1112     dense    NA
+## 242        flat     tonal            3116.883       1.2973    sparse    NA
+## 243     upsweep     tonal            1766.234       0.7444     dense    NA
+## 244        flat     tonal            3844.156       1.5765    sparse    NA
+## 245   downsweep     tonal            5090.909       0.3886     dense    NA
+## 246     upsweep     tonal            2389.610       0.6240    sparse    NA
+## 247   downsweep     tonal            3012.987       2.2114      none    NA
+## 248     upsweep     tonal            2285.714       1.0291     dense    NA
+## 249     upsweep     tonal            2597.403       1.6093     dense    NA
+## 250     upsweep     tonal            2909.091       0.8375     dense    NA
+## 251     upsweep     tonal            2701.299       1.1276     dense    NA
+## 252   downsweep     tonal            3428.571       0.6459     dense    NA
+## 253        flat     tonal            2805.195       0.4707     dense    NA
+## 254   downsweep     tonal            3220.779       0.7390     dense    NA
+## 255        flat     tonal            3220.779       1.3520     dense    NA
+## 256   downsweep     tonal            3116.883       1.0072     dense    NA
+## 257   downsweep     tonal            3012.987       0.8430     dense    NA
+## 258   downsweep     tonal            2701.299       0.6842     dense    NA
+## 259   downsweep     tonal            2805.195       0.7444     dense    NA
+## 260   downsweep     tonal            3012.987       0.6295     dense    NA
+## 261   downsweep     tonal            3012.987       0.7499     dense    NA
+## 262     upsweep     tonal            3116.883       2.3647     dense    NA
+##     Laura Ilaria
+## 1      NA     NA
+## 2      NA     NA
+## 3      NA     NA
+## 4      NA     NA
+## 5      NA     NA
+## 6      NA     NA
+## 7      NA     NA
+## 8      NA     NA
+## 9      NA     NA
+## 10     NA     NA
+## 11     NA     NA
+## 12     NA     NA
+## 13     NA     NA
+## 14     NA     NA
+## 15     NA     NA
+## 16     NA     NA
+## 17     NA     NA
+## 18     NA     NA
+## 19     NA     NA
+## 20     NA     NA
+## 21     NA     NA
+## 22     NA     NA
+## 23     NA     NA
+## 24     NA     NA
+## 25     NA     NA
+## 26     NA     NA
+## 27     NA     NA
+## 28     NA     NA
+## 29     NA     NA
+## 30     NA     NA
+## 31     NA     NA
+## 32     NA     NA
+## 33     NA     NA
+## 34     NA     NA
+## 35     NA     NA
+## 36     NA     NA
+## 37     NA     NA
+## 38     NA     NA
+## 39     NA     NA
+## 40     NA     NA
+## 41     NA     NA
+## 42     NA     NA
+## 43     NA     NA
+## 44     NA     NA
+## 45     NA     NA
+## 46     NA     NA
+## 47     NA     NA
+## 48     NA     NA
+## 49     NA     NA
+## 50     NA     NA
+## 51     NA     NA
+## 52     NA     NA
+## 53     NA     NA
+## 54     NA     NA
+## 55     NA     NA
+## 56     NA     NA
+## 57     NA     NA
+## 58     NA     NA
+## 59     NA     NA
+## 60     NA     NA
+## 61     NA     NA
+## 62     NA     NA
+## 63     NA     NA
+## 64     NA     NA
+## 65     NA     NA
+## 66     NA     NA
+## 67     NA     NA
+## 68     NA     NA
+## 69     NA     NA
+## 70     NA     NA
+## 71     NA     NA
+## 72     NA     NA
+## 73     NA     NA
+## 74     NA     NA
+## 75     NA     NA
+## 76     NA     NA
+## 77     NA     NA
+## 78     NA     NA
+## 79     NA     NA
+## 80     NA     NA
+## 81     NA     NA
+## 82     NA     NA
+## 83     NA     NA
+## 84     NA     NA
+## 85     NA     NA
+## 86     NA     NA
+## 87     NA     NA
+## 88     NA     NA
+## 89     NA     NA
+## 90     NA     NA
+## 91     NA     NA
+## 92     NA     NA
+## 93     NA     NA
+## 94     NA     NA
+## 95     NA     NA
+## 96     NA     NA
+## 97     NA     NA
+## 98     NA     NA
+## 99     NA     NA
+## 100    NA     NA
+## 101    NA     NA
+## 102    NA     NA
+## 103    NA     NA
+## 104    NA     NA
+## 105    NA     NA
+## 106    NA     NA
+## 107    NA     NA
+## 108    NA     NA
+## 109    NA     NA
+## 110    NA     NA
+## 111    NA     NA
+## 112    NA     NA
+## 113    NA     NA
+## 114    NA     NA
+## 115    NA     NA
+## 116    NA     NA
+## 117    NA     NA
+## 118    NA     NA
+## 119    NA     NA
+## 120    NA     NA
+## 121    NA     NA
+## 122    NA     NA
+## 123    NA     NA
+## 124    NA     NA
+## 125    NA     NA
+## 126    NA     NA
+## 127    NA     NA
+## 128    NA     NA
+## 129    NA     NA
+## 130    NA     NA
+## 131    NA     NA
+## 132    NA     NA
+## 133    NA     NA
+## 134    NA     NA
+## 135    NA     NA
+## 136    NA     NA
+## 137    NA     NA
+## 138    NA     NA
+## 139    NA     NA
+## 140    NA     NA
+## 141    NA     NA
+## 142    NA     NA
+## 143    NA     NA
+## 144    NA     NA
+## 145    NA     NA
+## 146    NA     NA
+## 147    NA     NA
+## 148    NA     NA
+## 149    NA     NA
+## 150    NA     NA
+## 151    NA     NA
+## 152    NA     NA
+## 153    NA     NA
+## 154    NA     NA
+## 155    NA     NA
+## 156    NA     NA
+## 157    NA     NA
+## 158    NA     NA
+## 159    NA     NA
+## 160    NA     NA
+## 161    NA     NA
+## 162    NA     NA
+## 163    NA     NA
+## 164    NA     NA
+## 165    NA     NA
+## 166    NA     NA
+## 167    NA     NA
+## 168    NA     NA
+## 169    NA     NA
+## 170    NA     NA
+## 171    NA     NA
+## 172    NA     NA
+## 173    NA     NA
+## 174    NA     NA
+## 175    NA     NA
+## 176    NA     NA
+## 177    NA     NA
+## 178    NA     NA
+## 179    NA     NA
+## 180    NA     NA
+## 181    NA     NA
+## 182    NA     NA
+## 183    NA     NA
+## 184    NA     NA
+## 185    NA     NA
+## 186    NA     NA
+## 187    NA     NA
+## 188    NA     NA
+## 189    NA     NA
+## 190    NA     NA
+## 191    NA     NA
+## 192    NA     NA
+## 193    NA     NA
+## 194    NA     NA
+## 195    NA     NA
+## 196    NA     NA
+## 197    NA     NA
+## 198    NA     NA
+## 199    NA     NA
+## 200    NA     NA
+## 201    NA     NA
+## 202    NA     NA
+## 203    NA     NA
+## 204    NA     NA
+## 205    NA     NA
+## 206    NA     NA
+## 207    NA     NA
+## 208    NA     NA
+## 209    NA     NA
+## 210    NA     NA
+## 211    NA     NA
+## 212    NA     NA
+## 213    NA     NA
+## 214    NA     NA
+## 215    NA     NA
+## 216    NA     NA
+## 217    NA     NA
+## 218    NA     NA
+## 219    NA     NA
+## 220    NA     NA
+## 221    NA     NA
+## 222    NA     NA
+## 223    NA     NA
+## 224    NA     NA
+## 225    NA     NA
+## 226    NA     NA
+## 227    NA     NA
+## 228    NA     NA
+## 229    NA     NA
+## 230    NA     NA
+## 231    NA     NA
+## 232    NA     NA
+## 233    NA     NA
+## 234    NA     NA
+## 235    NA     NA
+## 236    NA     NA
+## 237    NA     NA
+## 238    NA     NA
+## 239    NA     NA
+## 240    NA     NA
+## 241    NA     NA
+## 242    NA     NA
+## 243    NA     NA
+## 244    NA     NA
+## 245    NA     NA
+## 246    NA     NA
+## 247    NA     NA
+## 248    NA     NA
+## 249    NA     NA
+## 250    NA     NA
+## 251    NA     NA
+## 252    NA     NA
+## 253    NA     NA
+## 254    NA     NA
+## 255    NA     NA
+## 256    NA     NA
+## 257    NA     NA
+## 258    NA     NA
+## 259    NA     NA
+## 260    NA     NA
+## 261    NA     NA
+## 262    NA     NA</code></pre>
+<p><br/></p>
+</div>
+<div id="boxplots" class="section level5">
+<h5>Boxplots</h5>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.2</code></pre>
+<pre class="r"><code># make a basic boxplot
+p1 &lt;- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+plot(p1)</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`stat_boxplot()`).</code></pre>
+<pre><code>## Warning: Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># change the colors to something nicer - let&#39;s use one of my favorite wes anderson movies
+library(wesanderson)
+my_cols &lt;- wes_palettes$Zissou1[c(1,3,5)]
+my_cols</code></pre>
+<pre><code>## [1] &quot;#3B9AB2&quot; &quot;#EBCC2A&quot; &quot;#F21A00&quot;</code></pre>
+<pre class="r"><code>p2 &lt;- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+p2 + scale_fill_manual(values=my_cols)</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`stat_boxplot()`).
+## Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="r"><code># add better axis labels!
+
+p3 &lt;- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+p3 + scale_fill_manual(values=my_cols) + xlab(&quot;Year&quot;) + ylab(&quot;Peak Frequency (Hz)&quot;)</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`stat_boxplot()`).
+## Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<pre class="r"><code># change x axis to be better for my purposes (represent discrete years, not continuous values), and change the legend title
+
+p3 + scale_fill_manual(values=my_cols) + xlab(&quot;Year&quot;) + ylab(&quot;Peak Frequency (Hz)&quot;) + labs(fill =&quot;Year&quot;) + scale_x_discrete()</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`stat_boxplot()`).
+## Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<p><br/></p>
+</div>
+<div id="pie-charts" class="section level5">
+<h5>Pie Charts</h5>
+<pre class="r"><code># make a basic pie chart: tone types for different contour types 
+ggplot(data, aes(y=contour, fill=tone.type)) +
+  geom_bar() +
+  coord_polar(&quot;y&quot;, start=0)</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code># make it look nicer!
+
+my_cols &lt;- wes_palettes$Zissou1[c(4,5,3,1)]
+
+ggplot(data, aes(y=contour, fill=tone.type)) +
+  geom_bar() +
+  coord_polar(&quot;y&quot;, start=0) +
+  scale_fill_manual(values=my_cols) + 
+  ylab(&quot;Contour Type&quot;)  + 
+  labs(fill =&quot;Tone Type&quot;)</code></pre>
+<p><img src="Homework_12_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code># that&#39;s cool!</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

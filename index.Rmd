@@ -28,3 +28,7 @@ Call my Harry Mudd the way I was all up in those T(r)ibbles in [Homework 8](Home
 I'm really not sure I did [Homework 9](Homework_09) right - maybe you can tell me!
 
 [Homework 10](Homework_10) was difficult, but I think I got through it.
+
+Still working on Homework 11...
+
+[Homework 12](Homework_12) was so much fun! I'm having a great time exploring ggplot.

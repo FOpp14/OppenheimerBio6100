@@ -1,0 +1,80 @@
+---
+title: "Homework_12"
+author: "Franny Oppenheimer"
+date: "2024-04-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+##### Read in the data
+
+```{R}
+
+# testdata is just preliminary data from my work
+data <- read.csv("testdata.csv",header=TRUE,sep=",")
+data <- data.frame(data)
+data
+
+```
+
+<br/>
+
+##### Boxplots
+
+```{R}
+library(ggplot2)
+
+# make a basic boxplot
+p1 <- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+plot(p1)
+
+# change the colors to something nicer - let's use one of my favorite wes anderson movies
+library(wesanderson)
+my_cols <- wes_palettes$Zissou1[c(1,3,5)]
+my_cols
+
+p2 <- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+p2 + scale_fill_manual(values=my_cols)
+
+# add better axis labels!
+
+p3 <- ggplot(data,aes(x=X,y=peak.frequency..Hz.,fill=as.factor(X))) + geom_boxplot()
+p3 + scale_fill_manual(values=my_cols) + xlab("Year") + ylab("Peak Frequency (Hz)")
+
+# change x axis to be better for my purposes (represent discrete years, not continuous values), and change the legend title
+
+p3 + scale_fill_manual(values=my_cols) + xlab("Year") + ylab("Peak Frequency (Hz)") + labs(fill ="Year") + scale_x_discrete()
+
+```
+
+<br/>
+
+##### Pie Charts
+
+```{R}
+
+
+# make a basic pie chart: tone types for different contour types 
+ggplot(data, aes(y=contour, fill=tone.type)) +
+  geom_bar() +
+  coord_polar("y", start=0)
+
+# make it look nicer!
+
+my_cols <- wes_palettes$Zissou1[c(4,5,3,1)]
+
+ggplot(data, aes(y=contour, fill=tone.type)) +
+  geom_bar() +
+  coord_polar("y", start=0) +
+  scale_fill_manual(values=my_cols) + 
+  ylab("Contour Type")  + 
+  labs(fill ="Tone Type")
+
+
+# that's cool!
+```
