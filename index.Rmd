@@ -29,6 +29,6 @@ I'm really not sure I did [Homework 9](Homework_09) right - maybe you can tell m
 
 [Homework 10](Homework_10) was difficult, but I think I got through it.
 
-Still working on Homework 11...
+[Homework 11](Homework_11) was SO MUCH FUN!
 
 [Homework 12](Homework_12) was so much fun! I'm having a great time exploring ggplot.

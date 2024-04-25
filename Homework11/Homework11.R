@@ -1,20 +1,9 @@
----
-title: "Homework_11"
-author: "Franny Oppenheimer"
-date: "2024-04-10"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-<br/>
-
-##### Get Barracudar ready
-
-```{r}
-# load packages ----
+# Homework 11
+# Script using barracudar functions
+# Franny F Oppenheimer
+# University of Vermont
+# 10 April 2024
+#
 # load packages ----
 library(log4r)
 library(TeachingDemos)
@@ -28,17 +17,34 @@ library(ggmosaic)
 
 setwd("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar")
 
+source("barracudar/DataTableTemplate.R")
+source("barracudar/AddFolder.R")
+source("barracudar/BuildFunction.R")
+source("barracudar/MetaDataTemplate.R")
+source("barracudar/CreatePaddedLabel.R")
+source("barracudar/InitiateSeed.R")
+source("barracudar/SetUpLog.R")
+source("barracudar/SourceBatch.R")
+
+source("barracudar/QBox.R")
+source("barracudar/QCon1.R")
+source("barracudar/QCon2.R")
+source("barracudar/QHist.R")
+source("barracudar/QLogis.R")
+source("barracudar/QScat.R")
+source("barracudar/QBub.R")
+source("barracudar/QContour.R")
+
+
 library(stringr)
+
 
 setwd("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/OriginalData")
 
-```
+# Iterate through each folder  - go two levels down each time and then extract some file, in this case, pattern="countdata"
 
-<br/>
 
-##### Question 2
-
-```{r}
+# 2. ----
 # gathering the file names that we actually want to look at in a vector called filenames
 
 # list.files() will gather character strings of file names
@@ -62,13 +68,7 @@ for (i in 1:10) {
 
 filenames
 
-```
-
-<br/>
-
-##### Questions 3 & 4
-
-```{r}
+# 3 + 4 ----
 # generating functions to get rid of empty/missing cases, extract the year from the file name, calculate total number of individuals found, and calculate number of unique species found
 
 
@@ -117,5 +117,13 @@ return(metadata)
 
 getinfo(filelist,filenames)
 
-```
+
+
+
+
+
+
+
+
+
 
