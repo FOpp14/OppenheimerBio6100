@@ -21,6 +21,7 @@ library(TeachingDemos)
 library(tidyverse)
 library(pracma)
 library(ggmosaic)
+library(stringr)
 # load any additional packages here...
 
 
@@ -28,7 +29,14 @@ library(ggmosaic)
 
 setwd("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar")
 
-library(stringr)
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/DataTableTemplate.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/AddFolder.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/BuildFunction.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/MetaDataTemplate.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/CreatePaddedLabel.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/InitiateSeed.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/SetUpLog.R")
+source("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/barracudar/SourceBatch.R")
 
 setwd("~/Desktop/GitHub/ComputationalBiology/OppenheimerBio6100/Homework11/OriginalData")
 
